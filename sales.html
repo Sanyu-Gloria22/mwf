@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>user</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css"
+    />
+  </head>
+  <nav
+    class="navbar navbar-expand-lg bg-body-tertiary"
+    style="background-color: #e3f2fd"
+    data-bs-theme="light"
+  >
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">MWF</a>
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#navbarNavAltMarkup"
+        aria-controls="navbarNavAltMarkup"
+        aria-expanded="false"
+        aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+        <div class="navbar-nav">
+          <a class="nav-link active" aria-current="page" href="dash.html">Home</a>
+          <a class="nav-link" href="products.html">Products</a>
+          <a class="nav-link" href="users.html">Users</a>
+          <a class="nav-link" href="sales.html">Sales</a>
+          <a class="nav-link" href="stock.html">Add Stock</a>
+
+
+        </div>
+      </div>
+    </div>
+  </nav>
+<body>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f4f4f4;
+      padding: 20px;
+    }
+
+    h2 {
+      background-color: #333;
+      color: white;
+      padding: 10px;
+      border-radius: 5px;
+    }
+
+    form {
+      background-color: white;
+      padding: 20px;
+      border-radius: 8px;
+      max-width: 700px;
+      margin-bottom: 30px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+
+    label {
+      display: block;
+      margin-top: 10px;
+      font-weight: bold;
+    }
+
+    input, select {
+      width: 100%;
+      padding: 8px;
+      margin-top: 5px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+
+    .checkbox {
+      width: auto;
+      margin-top: 10px;
+    }
+
+    button {
+      margin-top: 20px;
+      padding: 10px 20px;
+      background-color: #28a745;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      background-color: white;
+    }
+
+    table, th, td {
+      border: 1px solid #ccc;
+    }
+
+    th, td {
+      padding: 10px;
+      text-align: left;
+    }
+
+    th {
+      background-color: #007bff;
+      color: white;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>Sales Recording Form</h2>
+
+  <form>
+    <label>Customer Name:
+      <input type="text" name="customerName">
+    </label>
+
+    <label>Type of Product:
+      <input type="text" name="productType">
+    </label>
+
+    <label>Name of Product:
+      <input type="text" name="productName">
+    </label>
+
+    <label>Quantity:
+      <input type="number" name="quantity">
+    </label>
+
+    <label>Price Per Unit:
+      <input type="number" name="unitPrice">
+    </label>
+
+    <label>Date of Sale:
+      <input type="date" name="saleDate">
+    </label>
+
+    <label>Payment Method:
+      <select name="paymentType">
+        <option>Cash</option>
+        <option>Cheque</option>
+        <option>Bank Overdraft</option>
+      </select>
+    </label>
+
+    <label>Sales Agent Name:
+      <input type="text" name="agentName">
+    </label>
+
+    <label>
+      <input type="checkbox" class="checkbox" name="transport">
+      Add 5% for Transport Provided by Company
+    </label>
+
+    <button type="submit">Record Sale</button>
+  </form>
+
+  <h2>Recorded Sales Table</h2>
+
+  <table>
+    <tr>
+      <th>Customer Name</th>
+      <th>Product Type</th>
+      <th>Product Name</th>
+      <th>Quantity</th>
+      <th>Price Per Unit</th>
+      <th>Transport?</th>
+      <th>Total Price</th>
+      <th>Payment Method</th>
+      <th>Sales Agent</th>
+      <th>Date</th>
+    </tr>
+    <tr>
+      <td>Jean Kawa</td>
+      <td>Furniture</td>
+      <td>Bed</td>
+      <td>1</td>
+      <td>1000,000 UGX</td>
+      <td>Yes</td>
+      <td>1000,000 UGX</td> 
+      <td>Cash</td>
+      <td>Brian</td>
+      <td>2025-07-27</td>
+    </tr> <tr>
+      <td>Jane N.</td>
+      <td>Furniture</td>
+      <td>Office Chair</td>
+      <td>2</td>
+      <td>150,000 UGX</td>
+      <td>Yes</td>
+      <td>315,000 UGX</td> 
+      <td>Cash</td>
+      <td>Brian</td>
+      <td>2025-07-27</td>
+    </tr>
+      <td>Bob Wander</td>
+      <td>Furniture</td>
+      <td>CupBoard</td>
+      <td>2</td>
+      <td>150,000 UGX</td>
+      <td>Yes</td>
+      <td>300,000 UGX</td> 
+      <td>Cash</td>
+      <td>Martha</td>
+      <td>2025-07-12</td>
+    </tr> <tr>
+      <td>Faith M.</td>
+      <td>Wood</td>
+      <td>Eucalpitus Poles</td>
+      <td>20</td>
+      <td>360,000 UGX</td>
+      <td>Yes</td>
+      <td>7,200,000 UGX</td> 
+      <td>Cash</td>
+      <td>Brian</td>
+      <td>2025-07-09</td>
+    </tr><tr>
+      <td>Trinity K.</td>
+      <td>Furniture</td>
+      <td>Dining Table</td>
+      <td>1</td>
+      <td>300,000 UGX</td>
+      <td>Yes</td>
+      <td>300,000 UGX</td> 
+      <td>Cash</td>
+      <td>Brian</td>
+      <td>2025-07-24</td>
+    </tr> <tr>
+      <td>Juma Kato</td>
+      <td>Furniture</td>
+      <td>Office Desks</td>
+      <td>2</td>
+      <td>560,000 UGX</td>
+      <td>Yes</td>
+      <td>110,000 UGX</td> 
+      <td>Cash</td>
+      <td>Gloria</td>
+      <td>2025-07-27</td>
+    </tr>
+      <td>Amosi W.</td>
+      <td>Wood</td>
+      <td>Pine Timbers</td>
+      <td>10</td>
+      <td>90,000 UGX</td>
+      <td>Yes</td>
+      <td>900,000 UGX</td> 
+      <td>Cash</td>
+      <td>Gloria</td>
+      <td>2025-07-23</td>
+    </tr> <tr>
+      <td>Martin H.</td>
+      <td>Wood</td>
+      <td>Mango Wood Sheet</td>
+      <td>20</td>
+      <td>76,000 UGX</td>
+      <td>Yes</td>
+      <td>1,520,000 UGX</td> 
+      <td>Cash</td>
+      <td>Brian</td>
+      <td>2025-07-17</td>
+    </tr>
+    <tr>
+      <td>Joan M.</td>
+      <td>Furniture</td>
+      <td>Kichen Shelf Unit</td>
+      <td>2</td>
+      <td>500,000 UGX</td>
+      <td>No</td>
+      <td>1000,000 UGX</td> 
+      <td>Cash</td>
+      <td>Brian</td>
+      <td>2025-07-18</td>
+  </table>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"></script>
+    <footer class="bg-white p-4 mt-10 text-center text-sm text-gray-400 border-t">
+         © 2025 Mayondo. All rights reserved.
+    </footer>
+</body>
+</html>

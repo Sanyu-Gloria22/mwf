@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Dashboard</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background: #f4f4f4;
+    }
+
+    header {
+      background: #333;
+      color: white;
+      padding: 20px;
+      text-align: center;
+    }
+
+    .container {
+      display: flex;
+    }
+
+    nav {
+      width: 200px;
+      background: #2c3e50;
+      height: 100vh;
+      padding: 20px;
+    }
+
+    nav a {
+      display: block;
+      color: white;
+      text-decoration: none;
+      margin-bottom: 15px;
+      padding: 10px;
+      border-radius: 4px;
+    }
+
+    nav a:hover {
+      background: #1abc9c;
+    }
+
+    main {
+      flex-grow: 1;
+      padding: 20px;
+    }
+
+    .cards {
+      display: flex;
+      gap: 20px;
+      margin-bottom: 30px;
+    }
+
+    .card {
+      background: white;
+      flex: 1;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+
+    .card h3 {
+      color: #555;
+      margin-bottom: 10px;
+    }
+
+    .table-container {
+      background: white;
+      padding: 15px;
+      border-radius: 8px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    th, td {
+      padding: 10px;
+      border: 1px solid #ccc;
+    }
+
+    th {
+      background: #007bff;
+      color: white;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Wood & Furniture Company Dashboard</h1>
+  </header>
+
+  <div class="container">
+    <nav>
+      <a href="dash.html">Home</a>
+      <a href="stock.html">Add Stock</a>
+      <a href="sales.html">Record Sale</a>
+      <a href="#">Reports</a>
+      <a href="products.html">Products</a>
+      <a href="users.html">Users</a>
+      <a href="#">Settings</a>
+      <a href="index.html">SignOut</a>
+
+    </nav>
+
+    <main>
+      <div class="cards">
+        <div class="card">
+          <h3>Total Stock</h3>
+          <p>150 items</p>
+        </div>
+        <div class="card">
+          <h3>Sales Today</h3>
+          <p>UGX 450,000</p>
+        </div>
+        <div class="card">
+          <h3>Pending Deliveries</h3>
+          <p>3 Orders</p>
+        </div>
+      </div>
+
+      <div class="table-container">
+        <h3>Recent Sales</h3>
+        <table>
+          <tr>
+            <th>Customer</th>
+            <th>Product</th>
+            <th>Qty</th>
+            <th>Total</th>
+            <th>Date</th>
+          </tr>
+          <tr>
+            <td>Jane</td>
+            <td>Office Chair</td>
+            <td>2</td>
+            <td>315,000 UGX</td>
+            <td>2025-07-27</td>
+          </tr>
+          <tr>
+            <td>David</td>
+            <td>Wooden Desk</td>
+            <td>1</td>
+            <td>250,000 UGX</td>
+            <td>2025-07-26</td>
+          </tr>
+        </table>
+      </div>
+    </main>
+  </div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"></script>
+    <footer class="bg-white p-4 mt-10 text-center text-sm text-gray-400 border-t">
+         © 2025 Mayondo. All rights reserved.
+    </footer>
+</body>
+</html>

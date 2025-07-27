@@ -1,11 +1,179 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Users</title>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>User Page</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css"
+    />
+  </head>
+  <nav
+    class="navbar navbar-expand-lg bg-body-tertiary"
+    style="background-color: #e3f2fd"
+    data-bs-theme="light"
+  >
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">MWF</a>
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#navbarNavAltMarkup"
+        aria-controls="navbarNavAltMarkup"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+        <div class="navbar-nav">
+          <a class="nav-link active" aria-current="page" href="dash.html">Home</a>
+          <a class="nav-link" href="products.html">Products</a>
+          <a class="nav-link" href="users.html">Users</a>
+          <a class="nav-link" href="sales.html">Sales</a>
+          <a class="nav-link" href="sales.html">Add Stock</a>
+        </div>
+      </div>
+    </div>
+  </nav>
+<body>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 20px;
+        background: #f4f4f4;
+    }
+
+    .container {
+        max-width: 900px;
+        margin: auto;
+        background: white;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+    
+    header {
+        background: #333;
+        color: white;
+        padding: 20px;
+        text-align: center;
+    }
+
+    h2 {
+        text-align: center;
+        margin-bottom: 20px;
+    }
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+
+    th,td {
+            padding: 12px 16px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+    }
+
+    th {
+        background-color: #f0f0f0;
+    }
+
+    .role {
+        padding: 4px 8px;
+        border-radius: 5px;
+        font-size: 0.85rem;
+        color: white;
+    }
+
+    .admin {
+        background-color: #d9534f;
+    }
+
+    .manager {
+        background-color: #5bc0de;
+    }
+
+    .attendant {
+        background-color: #5cb85c;
+    }
+
+    .btn {
+        padding: 6px 12px;
+        font-size: 0.9rem;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        margin-right: 5px;
+    }
+
+    .edit-btn {
+        background-color: #0275d8;
+        color: white;
+    }
+
+    .delete-btn {
+        background-color: #d9534f;
+        color: white;
+    }
+</style>
 </head>
 <body>
-    
-</body>
+
+<header>
+      <h1>Mayondo Wood & Furniture</h1>
+</header>
+
+    <div class="container">
+        <h2>User Management</h2>
+<table>
+<thead>
+    <tr>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Role</th>
+        <th>Actions</th>
+    </tr>
+</thead>
+<tbody>
+    <tr>
+        <td>Sarah Nakato.</td>
+        <td>sarah@company.com</td>
+        <td><span class="role admin">Admin</span></td>
+    <td>
+        <button class="btn edit-btn">Edit</button>
+        <button class="btn delete-btn">Delete</button>
+    </td>
+    </tr>
+    <tr>
+       <td>Sanyu Gloria.</td>
+       <td>sanyu@company.com</td>
+       <td><span class="role manager">Manager</span></td>
+       <td>
+       <button class="btn edit-btn">Edit</button>
+       <button class="btn delete-btn">Delete</button>
+       </td>
+    </tr>
+    <tr>
+       <td>Grace Nakimera.</td>
+       <td>grace@company.com</td>
+       <td><span class="role attendant">Attendant</span></td>
+       <td>
+       <button class="btn edit-btn">Edit</button>
+       <button class="btn delete-btn">Delete</button>
+       </td>
+    </tr>
+</tbody>
+</table>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"></script>
+     <footer class="bg-white p-4 mt-10 text-center text-sm text-gray-400 border-t">
+         © 2025 Mayondo. All rights reserved.
+     </footer>
+  </body>
 </html>
