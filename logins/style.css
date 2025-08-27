@@ -45,6 +45,12 @@ form button {
     cursor: pointer;
 }
 
+.btn:hover {
+    background-color: #2980b9;  
+    transform: scale(1.05);     
+    box-shadow: 0px 4px 8px rgba(0,0,0,0.2); 
+}
+
 table {
     width: 100%;
     border-collapse: collapse;
