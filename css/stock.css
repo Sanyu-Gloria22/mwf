@@ -1,0 +1,116 @@
+/* Reset some browser defaults */
+body, h2, form, table {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+}
+
+/* Body style */
+body {
+  background-color: #f8f9fa;
+  color: #333;
+  line-height: 1.6;
+}
+
+.navbar{
+  background-color: wheat;
+}
+
+/* Section styling */
+.section {
+  max-width: 900px;
+  margin: 40px auto;
+  padding: 20px;
+  background: wheat;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+/* Section title */
+.section h2 {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #2c3e50;
+}
+
+/* Form styling */
+form {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 15px;
+  margin-bottom: 30px;
+  background-color: wheat;
+}
+
+form label {
+  display: flex;
+  flex-direction: column;
+  font-weight: bold;
+  color: #555;
+}
+
+form input {
+  padding: 10px;
+  margin-top: 5px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  outline: none;
+  transition: 0.3s;
+}
+
+form input:focus {
+  border-color: #3498db;
+  box-shadow: 0 0 6px rgba(52, 152, 219, 0.4);
+}
+
+/* Button styling */
+button {
+  grid-column: span 2;
+  padding: 12px;
+  background: #3498db;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+button:hover {
+  background: #2980b9;
+  transform: scale(1.05);
+  box-shadow: 0px 4px 8px rgba(0,0,0,0.2);
+}
+
+/* Table styling */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+table thead {
+  background: #3498db;
+  color: white;
+}
+
+table th, table td {
+  padding: 12px;
+  border: 1px solid #ddd;
+  text-align: center;
+}
+
+table tr:nth-child(even) {
+  background: #f4f6f8;
+}
+
+/* Footer styling */
+footer {
+  margin-top: 40px;
+  padding: 15px;
+  background: #e3f2fd;
+  text-align: center;
+  font-size: 14px;
+  color: #555;
+  border-top: 1px solid #ddd;
+}
