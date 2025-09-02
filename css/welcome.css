@@ -1,0 +1,76 @@
+body{
+  display: flex;
+  color: black;
+  background-image: url(../images/mat.jpeg);
+  background-repeat: none;
+  background-size: cover;
+  align-items: center;
+  font-family: Arial, sans-serif;
+  height: 100vh;
+  margin: 0;
+  justify-content: center;
+}
+
+.page-container{
+   color: black;
+}
+
+.btn {
+  background-color: rgb(56, 136, 255);
+  border: none;
+  padding: 15px;
+  height: fit-content;
+  width: 200px;
+  border-radius: 500px;
+}
+
+.btn a:hover{
+  background-color: white;
+  color: rgb(56, 136, 255);
+}
+
+.footer {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  color: #ddd;
+  text-align: center;
+  padding: 15px 0;
+  font-size: 14px;
+}
+
+/* Footer links */
+.footer a {
+  color: #fff;
+  text-decoration: none;
+  margin: 0 8px;
+  transition: color 0.3s;
+}
+
+.footer a:hover {
+  color: #2575fc;
+}
+
+/* Social icons */
+.social-icons {
+  margin-top: 10px;
+}
+
+.social-icons a {
+  display: inline-block;
+  width: 35px;
+  height: 35px;
+  line-height: 35px;
+  margin: 0 5px;
+  border-radius: 50%;
+  background: #2575fc;
+  color: white;
+  font-size: 16px;
+  transition: 0.3s;
+}
+
+.social-icons a:hover {
+  background: white;
+  color: #2575fc;
+}
