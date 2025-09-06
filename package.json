@@ -1,5 +1,30 @@
 {
   "dependencies": {
     "chart.js": "^4.5.0"
-  }
+  },
+  "name": "mwf",
+  "version": "1.0.0",
+  "description": "Mayondo Wood and Furniture(MW&F) is a web-based management system for MWF, a B2B (Business-to-Business) wood and furniture company.\r This system helps manage stock, sales, users, and reporting in an organized way.\r Its features are; stock Management where furniture or wood stock is added, updated, and tracked.\r Sales Tracking where sales are recorded and invoices generated.\r Role-Based Access where dashboards for the Admin, Manager, and Atendants are seperated.\r Lastly in stock management is authentication where login for different roles are secured.\r Tech Stack: 1. Frontend;\r                      HTML\r                      CSS\r                      and JavaScript\r User Roles; Admin: Full control over users, stock, and report\r             Manager: Oversees sales and staff performance.\r             Attendant: Records sales and manages daily stock.\r Roadmap; • Connect frontend to MongoDB\r          • Add authentication & authorization\r          • Build reporting dashboard with charts\r          • Deploy online",
+  "main": "server.js",
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Sanyu-Gloria22/mwf.git"
+  },
+  "keywords": [
+    "Mayondo",
+    "wood",
+    "and",
+    "furniture",
+    "project"
+  ],
+  "author": "Sanyu Gloria",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Sanyu-Gloria22/mwf/issues"
+  },
+  "homepage": "https://github.com/Sanyu-Gloria22/mwf#readme"
 }

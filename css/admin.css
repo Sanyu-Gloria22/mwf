@@ -96,3 +96,16 @@ footer {
   color: #555;
   border-top: 1px solid #ddd;
 }
+
+.charts {
+  display: grid;
+  grid-template-columns: 2fr 1fr; /* Line chart bigger, pie smaller */
+  gap: 20px;
+}
+
+.chart-box {
+  background: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}

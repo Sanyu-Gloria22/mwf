@@ -1,10 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Admin's Dashboard</title>
-  <link rel="stylesheet" href="css/dash.css">
+  <link rel="stylesheet" href="css/admin.css">
+</head>
+
 <body>
   <header>
     <h1>Mayondo Wood & Furniture Company</h1>
@@ -21,7 +24,6 @@
       <a href="#">Settings</a>
       <a href="index.html">SignOut</a>
     </nav>
-    
     <main>
       <div class="cards">
         <div class="card">
@@ -37,38 +39,154 @@
           <p>3 Orders</p>
         </div>
       </div>
-
-      <div class="table-container">
-        <h3>Reports</h3>
-        <table>
-          <tr>
-            <th>Customer</th>
-            <th>Product</th>
-            <th>Qty</th>
-            <th>Total</th>
-            <th>Date</th>
-          </tr>
-          <tr>
-            <td>Jane</td>
-            <td>Office Chair</td>
-            <td>2</td>
-            <td>315,000 UGX</td>
-            <td>2025-07-27</td>
-          </tr>
-          <tr>
-            <td>David</td>
-            <td>Wooden Desk</td>
-            <td>1</td>
-            <td>250,000 UGX</td>
-            <td>2025-07-26</td>
-          </tr>
-        </table>
-      </div>
     </main>
+
+    <div class="charts">
+      <div class="chart-box">
+        <h3>Revenue Growth</h3>
+        <canvas id="chartRevenue"></canvas>
+      </div>
+
+      <div class="chart-box">
+      <h3>Top Selling Products</h3>
+      <canvas id="chartSales"></canvas>
+    </div>
+
+    </div>
   </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.5.0/dist/chart.umd.min.js"></script>
+    <script>
+      const ctx = document.getElementById('chartRevenue').getContext('2d');
+
+      new Chart(ctx, {
+        type: 'line',
+        data: {
+          labels: ['January', 'February', 'March'],
+          datasets: [
+            {
+              label: 'Revenue ($)',
+              data: [10000, 12000, 14500], // total revenue
+              borderColor: 'blue',
+              backgroundColor: 'rgba(54, 162, 235, 0.2)',
+              yAxisID: 'y'
+            },
+            {
+              label: 'Growth (%)',
+              data: [0, 20, 20.8], // growth percentages
+              borderColor: 'green',
+              backgroundColor: 'rgba(75, 192, 192, 0.2)',
+              yAxisID: 'y1'
+            }
+          ]
+        },
+        options: {
+          responsive: true,
+          scales: {
+            y: { // Revenue scale
+              type: 'linear',
+              position: 'left',
+              min: 0,
+              max: 16000,
+              ticks: { stepSize: 2000 },
+              title: { display: true, text: 'Revenue ($)' }
+            },
+            y1: { // Growth scale
+              type: 'linear',
+              position: 'right',
+              min: 0,
+              max: 30,
+              ticks: { stepSize: 10, callback: (value) => value + '%' },
+              title: { display: true, text: 'Growth (%)' }
+            }
+          }
+        }
+      });
+
+      const data = {
+        label['product'
+
+        ]
+      }
+
+      const salesCtx = document.querySelector('chartSales');
+      const salesChart =
+      new Chart(salesCtx, {
+        type: 'bar',
+        data: {
+          labels: ['', 'February', 'March'],
+          datasets: [
+            {
+              label: 'Revenue ($)',
+              data: [10000, 12000, 14500], // total revenue
+              borderColor: 'blue',
+              backgroundColor: 'rgba(54, 162, 235, 0.2)',
+              yAxisID: 'y'
+            },
+            {
+              label: 'Growth (%)',
+              data: [0, 20, 20.8], // growth percentages
+              borderColor: 'green',
+              backgroundColor: 'rgba(75, 192, 192, 0.2)',
+              yAxisID: 'y1'
+            }
+          ]
+        },
+        options: {
+          responsive: true,
+          scales: {
+            y: { // Revenue scale
+              type: 'linear',
+              position: 'left',
+              min: 0,
+              max: 16000,
+              ticks: { stepSize: 2000 },
+              title: { display: true, text: 'Revenue ($)' }
+            },
+            y1: { // Growth scale
+              type: 'linear',
+              position: 'right',
+              min: 0,
+              max: 30,
+              ticks: { stepSize: 10, callback: (value) => value + '%' },
+              title: { display: true, text: 'Growth (%)' }
+            }
+          }
+        }
+      });
+
+    </script>
     <footer class="bg-white p-4 mt-10 text-center text-sm text-gray-400 border-t">
-         © 2025 Mayondo. All rights reserved.
+      © 2025 Mayondo. All rights reserved.
     </footer>
-  <script src="script.js"></script>
 </body>
+
 </html>
+
+
+<!-- <div class="table-container">
+  <h3>Reports</h3>
+  <table>
+    <tr>
+      <th>Customer</th>
+      <th>Product</th>
+      <th>Qty</th>
+      <th>Total</th>
+      <th>Date</th>
+    </tr>
+    <tr>
+      <td>Jane</td>
+      <td>Office Chair</td>
+      <td>2</td>
+      <td>315,000 UGX</td>
+      <td>2025-07-27</td>
+    </tr>
+    <tr>
+      <td>David</td>
+      <td>Wooden Desk</td>
+      <td>1</td>
+      <td>250,000 UGX</td>
+      <td>2025-07-26</td>
+    </tr>
+  </table>
+</div> -->
