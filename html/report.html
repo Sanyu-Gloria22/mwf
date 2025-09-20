@@ -4,8 +4,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Users</title>
-  <link rel="stylesheet" href="/css/user.css">
+  <title>Record Sales</title>
+  <link rel="stylesheet" href="/css/report.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" />
 
 </head>
@@ -33,44 +33,40 @@
       </div>
     </div>
   </nav>
-
-  <header>
-    <h2>Mayondo Wood & Furniture User Management</h2>
-  </header>
-
-  <div class="container">
-    <table>
-      <thead>
-        <tr>
-          <th>Name</th>
-          <th>Email</th>
-          <th>Role</th>
-          <th>Actions</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>Sanyu Gloria.</td>
-          <td>sanyu@company.com</td>
-          <td><span class="role manager">Manager</span></td>
-          <td>
-            <button class="btn edit-btn">Edit</button>
-            <button class="btn delete-btn">Delete</button>
-          </td>
-        </tr>
-        <tr>
-          <td>Grace Nakimera.</td>
-          <td>grace@company.com</td>
-          <td><span class="role attendant">Attendant</span></td>
-          <td>
-            <button class="btn edit-btn">Edit</button>
-            <button class="btn delete-btn">Delete</button>
-          </td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-
+  <div class="report-card">
+  <h2> Manager's Report</h2>
+  <table class="report-table">
+    <thead>
+      <tr>
+        <th>Category</th>
+        <th>Details</th>
+        <th>Status/Notes</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Sales Performance</td>
+        <td>Total Sales: UGX 52,000,000 <br> Growth: +12%</td>
+        <td style="color:green;">Good</td>
+      </tr>
+      <tr>
+        <td>Top Products</td>
+        <td>Pine Timber, Teak Chairs, Oak Tables</td>
+        <td>High Demand</td>
+      </tr>
+      <tr>
+        <td>Stock & Inventory</td>
+        <td>Fast-Moving: Pine, Teak <br> Slow-Moving: Walnut</td>
+        <td style="color:red;">⚠ Mahogany Low</td>
+      </tr>
+      <tr>
+        <td>Recommendations</td>
+        <td>1. Restock Mahogany <br> 2. Market Outdoor Furniture <br> 3. Negotiate transport rates</td>
+        <td>Pending Action</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
 
   <script src="../script/form.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"></script>

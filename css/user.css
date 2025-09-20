@@ -6,16 +6,13 @@
 }
 
 body {
-  color: white;
-  background-image: url(../images/jk.jpg);
-  background-size: cover;
-  align-items: center;
-  justify-content: center;
+  background-color: #f8f9fa;
+  color: #333;
   line-height: 1.6;
 }
 
 .navbar {
-  background-color: rgb(211,165,122);
+  background-color: rgb(125, 12, 69);
 }
 
 .navbar-brand,
@@ -32,55 +29,73 @@ body {
   border-radius: 5px;
 }
 
+header {
+  background: white;
+  color: rgb(125, 12, 69);
+  padding: 20px;
+  text-align: center;
+}
+
 h2 {
   text-align: center;
-  color: white;
-  margin: 20px 0;  
+  margin-bottom: 20px;
 }
 
-.form-container {
-  max-width: 600px;
-  margin: 20px auto;
-  padding: 20px;
-  background: white;
-  border-radius: 20px;
-  box-shadow: 0px 4px 8px rgba(0,0,0,0.1);
-}
-
-.form-container label {
-  display: block;
-  margin: 10px 0 5px;
-  font-weight: bold;
-}
-
-.form-container input,
-.form-container select {
+table {
   width: 100%;
-  padding: 10px;
-  border: 1px solid #ddd;
-  border-radius: 6px;
-  margin-bottom: 15px;
+  border-collapse: collapse;
 }
 
-button {
-  background-color: rgb(196,102,31);
+th,td {
+  padding: 12px 16px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+th {
+  background-color: rgb(125, 12, 69);
+}
+
+.role {
+  padding: 4px 8px;
+  border-radius: 5px;
+  font-size: 0.85rem;
   color: white;
+}
+
+.admin {
+  background-color: #d9534f;
+}
+
+.manager {
+  background-color: #5bc0de;
+}
+
+.attendant {
+  background-color: #5cb85c;
+}
+
+.btn {
+  padding: 6px 12px;
+  font-size: 0.9rem;
   border: none;
-  padding: 12px 20px;
-  border-radius: px;
+  border-radius: 5px;
   cursor: pointer;
-  font-size: 16px;
-  width: 100%;
-  transition: 0.3s;
+  margin-right: 5px;
 }
 
-button:hover {
-  background-color: rgb(196,102,31);
-  
+.edit-btn {
+  background-color: #0275d8;
+  color: white;
+}
+
+.delete-btn {
+  background-color: #d9534f;
+  color: white;
 }
 
 footer {
-  background-color: rgb(196,102,31);
+  background-color: rgb(125, 12, 69);
   color: white;
   text-align: center;
   padding: 15px;
