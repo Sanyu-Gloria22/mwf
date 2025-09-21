@@ -21,7 +21,7 @@ body{
 .page-container{
   background: transparent;
   border-radius: 12px;
-  box-shadow: 0 8px 25px rgb(0 0 0 / 0.1);
+  box-shadow: 0 8px 25px rgb(32, 31, 31);
   max-width: 480px;
   width: 100%;
   padding: 40px 36px;
@@ -71,7 +71,7 @@ a.btn-signup {
   
 
 a.btn:hover{
-  background-color: rgb(236, 154, 98);
+  background-color: white;
   color: rgb(195, 103, 40);
 }
 

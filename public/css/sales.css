@@ -34,7 +34,7 @@ body {
 
 h2 {
   text-align: center;
-  color: white;
+  color: white !important;
   margin: 20px 0;  
 }
 

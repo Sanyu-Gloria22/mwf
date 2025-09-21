@@ -5,7 +5,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Record Sales</title>
-  <link rel="stylesheet" href="../css/sales.css">
+  <link rel="stylesheet" href="css/sales.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" />
 
 </head>
@@ -39,7 +39,7 @@
 
   <h2>Sales Recording Form</h2>
   <div class="form-container">
-    <form>
+    <form action="/sales" method="post">
       <label>Customer Name:
         <input type="text" name="customerName">
       </label>
@@ -78,7 +78,7 @@
 
       <label>
         <input type="checkbox" class="checkbox" name="transport">
-        Add 5% for Transport Provided by Company
+        Add 5% for Transport 
       </label>
 
       <button type="submit">Record Sale</button>

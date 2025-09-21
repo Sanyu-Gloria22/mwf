@@ -1,11 +1,9 @@
-/* Reset some browser defaults */
 body, h2, form, table {
   margin: 0;
   padding: 0;
   font-family: Arial, sans-serif;
 }
 
-/* Body style */
 body {
   background-color:#f4f4f4fa;
   color: #333;
@@ -16,7 +14,6 @@ body {
   background-color: rgb(125, 12, 69);
 }
 
-/* Section styling */
 .section {
   max-width: 900px;
   margin: 40px auto;
@@ -26,14 +23,12 @@ body {
   box-shadow: 0 4px 10px rgba(0,0,0,0.1);
 } */
 
-/* Section title */
  .section h2 {
   text-align: center;
   margin-bottom: 20px;
   color: #2c3e50;
 } 
 
-/* Form styling */
 form {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -63,7 +58,7 @@ form input:focus {
   box-shadow: 0 0 6px rgba(52, 152, 219, 0.4);
 }
 
-/* Button styling */
+
 button {
   grid-column: span 2;
   padding: 12px;
@@ -82,7 +77,6 @@ button:hover {
   box-shadow: 0px 4px 8px rgba(0,0,0,0.2);
 }
 
-/* Table styling */
 table {
   width: 100%;
   border-collapse: collapse;
@@ -106,7 +100,6 @@ table tr:nth-child(even) {
   background: #f4f6f8;
 }
 
-/* Footer styling */
 footer {
   margin-top: 40px;
   padding: 15px;

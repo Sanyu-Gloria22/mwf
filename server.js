@@ -1,38 +1,46 @@
-// Dependencies
 const express = require("express");
-const path = express("path");
 
 
-//import routes
-
-
-//instantiations
 const app = express();
-const port = 3000;
-
-//configurations
-
-//setting up mongoDB configurations
-mongoose.connect(process.env.MONGODB_URI, {
-
-  //  useNewUrlParser: true,
-  //  useUnifiedTopology: true
-
-})
-.then(() => console.log(" Connected to MongoDB Atlas"))
-.catch(err => console.error(" MongoDB connection error:", err));
+const port = 3001;
 
 
-//setting engine to pug
+//Middlewares
+app. use(express.static('public'));
+app.use(express.urlencoded({ extended: true })); 
 
-app.get("/index", (req, res) =>{
-  res.send('Welcome to Mayoundo Wood and Furniture');
+
+app.get("/", (req, res) => {
+ res.send("index");
 });
+
+app.get("/sales", (req, res) =>{
+  res.sendFile(__dirname + "/html/sales.html");
+});
+
+app.post("/sales", (req, res) =>{
+  console.log(req.body);
+});
+
+
+app.get("/products", (req, res) =>{
+  res.sendFile(_dirname + "/products.html");
+});
+
+app.post("/products", (req, res) =>{
+  console.log(req.body);
+});
+
+
+
+
+
 
 
 
 app.use((req, res) => {
   res.status(404).send(`Oops! Route not found.`);
 });
+
 
 app.listen(port, () => console.log(`listening on port ${port}`));

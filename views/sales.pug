@@ -1,0 +1,60 @@
+doctype html
+head
+  meta(charset='UTF-8')
+  meta(name='viewport' content='width=device-width, initial-scale=1.0')
+  title Record Sales
+  link(rel='stylesheet' href='css/sales.css')
+  link(rel='stylesheet' href='https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css')
+nav.navbar.navbar-expand-lg
+  .container-fluid
+    a.navbar-brand(href='#') MWF
+    button.navbar-toggler(type='button' data-bs-toggle='collapse' data-bs-target='#navbarNavAltMarkup' aria-controls='navbarNavAltMarkup' aria-expanded='false' aria-label='Toggle navigation')
+      span.navbar-toggler-icon
+    #navbarNavAltMarkup.collapse.navbar-collapse
+      .navbar-nav
+        a.nav-link.active(aria-current='page' href='manager.html') Dashboard
+        a.nav-link(href='manager.html') Users
+        a.nav-link(href='attendants.html') Attendants
+        a.nav-link(href='products.html') Products
+        a.nav-link(href='sales.html')  Add Sales
+        a.nav-link(href='salestable.html') Sales
+        a.nav-link(href='stock.html') Add Stock
+        a.nav-link(href='.html') Stock
+h2 Sales Recording Form
+.form-container
+  form(action='/sales' method='post')
+    label
+      | Customer Name:
+      input(type='text' name='customerName')
+    label
+      | Product Type:
+      input(type='text' name='productType')
+    label
+      | Product Name:
+      input(type='text' name='productName')
+    label
+      | Quantity:
+      input(type='number' name='quantity')
+    label
+      | Price Per Unit:
+      input(type='number' name='unitPrice')
+    label
+      | Date of Sale:
+      input(type='date' name='saleDate')
+    label
+      | Payment Method:
+      select(name='paymentType')
+        option Cash
+        option Cheque
+        option Bank Overdraft
+    label
+      | Sales Agent Name:
+      input(type='text' name='agentName')
+    label
+      input.checkbox(type='checkbox' name='transport')
+      |         Add 5% for Transport
+    button(type='submit') Record Sale
+script(src='/Js/form.js')
+script(src='https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js')
+footer
+  | &copy; 2025 Mayondo. All rights reserved.
