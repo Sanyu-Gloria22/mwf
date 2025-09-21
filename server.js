@@ -1,6 +1,10 @@
+// Dependencies
 const express = require("express");
 
+//import routes
+const salesRoutes = require("./routes/salesRouter");
 
+//installations
 const app = express();
 const port = 3001;
 
@@ -30,6 +34,10 @@ app.get("/products", (req, res) =>{
 app.post("/products", (req, res) =>{
   console.log(req.body);
 });
+
+
+//Routes
+app.use("/",salesRoutes)
 
 
 
