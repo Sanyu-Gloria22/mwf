@@ -30,7 +30,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     alert(
-      `Sale recorded!\n\nCustomer: ${customerName}\nProduct: ${productName}\nSales Agent Name: ${agentName}\nQuantity: ${quantity}\nTotal Price: ${totalPrice.toFixed(
+      `Sale recorded!\n\nCustomer: ${customerName}\nProduct: ${productName}\nQuantity: ${quantity}\nTotal Price: ${totalPrice.toFixed(
         2
       )} UGX`
     );
@@ -38,3 +38,33 @@ document.addEventListener("DOMContentLoaded", () => {
     form.reset();
   });
 });
+
+
+
+document.querySelectorAll('.dropdown-item').forEach(item => {
+  item.addEventListener('click', function (e) {
+    e.preventDefault();
+    let value = this.getAttribute('data-value');
+    let text = this.textContent;
+
+    document.getElementById('roleDropdown').textContent = text;
+    document.getElementById('roleInput').value = value;
+  });
+});
+
+
+function togglePassword() {
+  const passwordField = document.getElementById("exampleInputPassword1");
+  const icon = document.getElementById("toggleIcon");
+
+  if (passwordField.type === "password") {
+    passwordField.type = "text";
+    icon.classList.remove("fa-eye");
+    icon.classList.add("fa-eye-slash");
+  } else {
+    passwordField.type = "password";
+    icon.classList.remove("fa-eye-slash");
+    icon.classList.add("fa-eye"); 
+  }
+}
+

@@ -2,7 +2,7 @@ doctype html
 head
   meta(charset='UTF-8')
   meta(name='viewport' content='width=device-width, initial-scale=1.0')
-  title SignUp
+  title MW&amp;F SIGNUP
   link(rel='stylesheet' href='/css/signup.css')
   link(rel='stylesheet' href='https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css')
   link(rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css')
@@ -16,16 +16,20 @@ form#login-form(action='/signup' method='post')
       br
       br
     .mb-4
-      label.form-label(for='exampleInputName') Name
-      input#exampleInputName.form-control(type='name' aria-describedby='nameHelp')
+      label.form-label(for='exampleInputName') Full Name
+      input#exampleInputName.form-control(type='name' name='name' aria-describedby='nameHelp')
       #nameHelp.form-text
     .mb-4
       label.form-label(for='exampleInputEmail1') Email address
-      input#exampleInputEmail1.form-control(type='email' aria-describedby='emailHelp')
+      input#exampleInputEmail1.form-control(type='email' name='emailAddress' aria-describedby='emailHelp')
       #emailHelp.form-text
+    .mb-4
+      label.form-label(for='exampleInputPhoneNumber') Phone Number
+      input#exampleInputEmail1.form-control(type='phoneNumber' name='phoneNumber' aria-describedby='phoneNumberHelp')
+      #phoneNumberHelp.form-text
     .mb-4.position-relative
       label.form-label(for='exampleInputPassword1') Password
-      input#exampleInputPassword1.form-control(type='password')
+      input#exampleInputPassword1.form-control(type='password' name='password')
       span.toggle-password(onclick='togglePassword()')
         i#toggleIcon.fa-solid.fa-eye
     .mb-3
@@ -43,4 +47,4 @@ form#login-form(action='/signup' method='post')
         label.form-check-label(for='exampleCheck1') Forgot password
     a.btn(href='manager.html' type='login') Signup
 script(src='https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js')
-script(src='/script/form.js')
+script(src='/scripts/form.js')

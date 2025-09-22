@@ -8,6 +8,17 @@ router.get("/", (req, res) => {
 });
 
 
+router.get("/signup", (req, res) =>{
+  res.render("signUp",{title: "signUp page"})
+});
+
+router.post("/signup", (req, res) =>{
+  console.log(req.body);
+});
+
+
+
+
 
 
 module.exports = router;
