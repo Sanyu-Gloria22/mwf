@@ -1,0 +1,46 @@
+doctype html
+head
+  meta(charset='UTF-8')
+  meta(name='viewport' content='width=device-width, initial-scale=1.0')
+  title SignUp
+  link(rel='stylesheet' href='/css/signup.css')
+  link(rel='stylesheet' href='https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css')
+  link(rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css')
+form#login-form(action='/signup' method='post')
+  .main
+    .container
+      .apply-box
+        h1
+          | Sign Up
+          span
+      br
+      br
+    .mb-4
+      label.form-label(for='exampleInputName') Name
+      input#exampleInputName.form-control(type='name' aria-describedby='nameHelp')
+      #nameHelp.form-text
+    .mb-4
+      label.form-label(for='exampleInputEmail1') Email address
+      input#exampleInputEmail1.form-control(type='email' aria-describedby='emailHelp')
+      #emailHelp.form-text
+    .mb-4.position-relative
+      label.form-label(for='exampleInputPassword1') Password
+      input#exampleInputPassword1.form-control(type='password')
+      span.toggle-password(onclick='togglePassword()')
+        i#toggleIcon.fa-solid.fa-eye
+    .mb-3
+      label.form-label(for='roleDropdown') Select Role
+      .dropdown
+        button#roleDropdown.btn.btn-custom.dropdown-toggle.w-100(type='button' data-bs-toggle='dropdown' aria-expanded='false')
+          | -- Choose Role --
+        ul.dropdown-menu.w-100(aria-labelledby='roleDropdown')
+          li
+            a.dropdown-item(href='#' data-value='manager') Manager
+          li
+            a.dropdown-item(href='#' data-value='attendant') Attendant
+      .mb-4.form-check(style=' margin: auto; margin-right: 0; width: fit-content; display: block;')
+        input#exampleCheck1.form-check-input(type='checkbox')
+        label.form-check-label(for='exampleCheck1') Forgot password
+    a.btn(href='manager.html' type='login') Signup
+script(src='https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js')
+script(src='/script/form.js')

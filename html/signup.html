@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mwf-login</title>
+  <link rel="stylesheet" href="/public/css/signup.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+</head>
+
+<body>
+  <form id="login-form" action="/signup" method="post">
+    <div class="main">
+
+      <div class="container">
+        <div class="apply-box">
+          <h1>Sign Up<span></span></h1>
+        </div><br><br>
+      </div>
+
+      <div class="mb-4">
+        <label for="exampleInputName" class="form-label">Name</label>
+        <input type="name" class="form-control" id="exampleInputName" aria-describedby="nameHelp" />
+        <div id="nameHelp" class="form-text"></div>
+      </div>
+
+
+      <div class="mb-4">
+        <label for="exampleInputEmail1" class="form-label">Email address</label>
+        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" />
+        <div id="emailHelp" class="form-text"></div>
+      </div>
+
+      <div class="mb-4 position-relative">
+        <label for="exampleInputPassword1" class="form-label">Password</label>
+        <input type="password" class="form-control" id="exampleInputPassword1" />
+
+        <span class="toggle-password" onclick="togglePassword()">
+          <i class="fa-solid fa-eye" id="toggleIcon"></i>
+        </span>
+      </div>
+
+
+      <div class="mb-3">
+        <label for="roleDropdown" class="form-label">Select Role</label>
+        <div class="dropdown">
+          <button class="btn btn-custom dropdown-toggle w-100" type="button" id="roleDropdown" data-bs-toggle="dropdown"
+            aria-expanded="false">
+            -- Choose Role --
+          </button>
+          <ul class="dropdown-menu w-100" aria-labelledby="roleDropdown">
+            <li><a class="dropdown-item" href="#" data-value="manager">Manager</a></li>
+            <li><a class="dropdown-item" href="#" data-value="attendant">Attendant</a></li>
+          </ul>
+        </div>
+
+
+        <div class="mb-4 form-check" style=" margin: auto; margin-right: 0; width: fit-content; display: block;">
+          <input type="checkbox" class="form-check-input" id="exampleCheck1" />
+          <label class="form-check-label" for="exampleCheck1">Forgot password</label>
+        </div>
+      </div>
+
+      <a href="manager.html" type="login" class="btn">Signup</a>
+  </form>
+
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"></script>
+
+  <script src="/script/form.js"></script>
+</body>
+
+</html>

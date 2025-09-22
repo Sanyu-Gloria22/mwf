@@ -1,43 +1,35 @@
 // Dependencies
 const express = require("express");
+const path = require("path");
+
 
 //import routes
-const salesRoutes = require("./routes/salesRouter");
+const salesRoutes = require("./routes/salesRoute");
+const authRoutes = require("./routes/authRoutes");
+const signupRoutes = require("./routes/signupRoutes");
 
 //installations
 const app = express();
 const port = 3001;
 
+//configurations
+
+app.set("view engine", "pug");
+app.set('views', path.join(__dirname, 'views'));
+
 
 //Middlewares
-app. use(express.static('public'));
+app.use(express.static(path.join(__dirname, "public")));
 app.use(express.urlencoded({ extended: true })); 
 
 
-app.get("/", (req, res) => {
- res.send("index");
-});
-
-app.get("/sales", (req, res) =>{
-  res.sendFile(__dirname + "/html/sales.html");
-});
-
-app.post("/sales", (req, res) =>{
-  console.log(req.body);
-});
-
-
-app.get("/products", (req, res) =>{
-  res.sendFile(_dirname + "/products.html");
-});
-
-app.post("/products", (req, res) =>{
-  console.log(req.body);
-});
 
 
 //Routes
-app.use("/",salesRoutes)
+app.use("/",salesRoutes);
+app.use("/",authRoutes);
+app.use("/",signupRoutes);
+
 
 
 
