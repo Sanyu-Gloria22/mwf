@@ -16,20 +16,17 @@ form#login-form(action='/signup' method='post')
       br
       br
     .mb-4
-      label.form-label(for='exampleInputName') Full Name
-      input#exampleInputName.form-control(type='name' name='name' aria-describedby='nameHelp')
-      #nameHelp.form-text
+      label.form-label(for='name') Name
+      input#name.form-control(type='name' name='name')
     .mb-4
-      label.form-label(for='exampleInputEmail1') Email address
-      input#exampleInputEmail1.form-control(type='email' name='emailAddress' aria-describedby='emailHelp')
-      #emailHelp.form-text
+      label.form-label(for='email') Email address
+      input#email.form-control(type='email' name='emailAddress')
     .mb-4
-      label.form-label(for='exampleInputPhoneNumber') Phone Number
-      input#exampleInputEmail1.form-control(type='phoneNumber' name='phoneNumber' aria-describedby='phoneNumberHelp')
-      #phoneNumberHelp.form-text
+      label.form-label(for='phoneNumber') Phone Number
+      input#phoneNumber.form-control(type='phoneNumber' name='phoneNumber')
     .mb-4.position-relative
-      label.form-label(for='exampleInputPassword1') Password
-      input#exampleInputPassword1.form-control(type='password' name='password')
+      label.form-label(for='password') Password
+      input#password.form-control(type='password' name='password')
       span.toggle-password(onclick='togglePassword()')
         i#toggleIcon.fa-solid.fa-eye
     .mb-3

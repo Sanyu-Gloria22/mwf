@@ -6,7 +6,6 @@ const path = require("path");
 //import routes
 const salesRoutes = require("./routes/salesRoute");
 const authRoutes = require("./routes/authRoutes");
-const signupRoutes = require("./routes/signupRoutes");
 
 //installations
 const app = express();
@@ -28,7 +27,7 @@ app.use(express.urlencoded({ extended: true }));
 //Routes
 app.use("/",salesRoutes);
 app.use("/",authRoutes);
-app.use("/",signupRoutes);
+
 
 
 
