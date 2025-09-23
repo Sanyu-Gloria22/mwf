@@ -4,98 +4,152 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Manager's Dashboard</title>
-  <link rel="stylesheet" href="/css/manager.css">
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+  <title>MWF Manager Dashboard</title>
+  <link rel="stylesheet" href="/public/css/manager.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
-<body>
 
+<body>
   <nav class="navbar navbar-expand-lg">
 
-  <div class="container-fluid">
-    <a class="navbar-brand" href="#">MWF</a>
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">MWF</a>
 
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
-      aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
+        aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
 
-    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-      <div class="navbar-nav">
-        <a class="nav-link active" aria-current="page" href="dash.html">Home</a>
-        <a class="nav-link" href="products.html">Products</a>
-        <a class="nav-link" href="users.html">Users</a>
-        <a class="nav-link" href="sales.html">Sales</a>
-        <a class="nav-link" href="stock.html">Add Stock</a>
+      <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+        <div class="navbar-nav">
+          <a class="nav-link active" aria-current="page" href="manager.html">Dashboard</a>
+          <a class="nav-link" href="manager.html">Users</a>
+          <a class="nav-link" href="attendants.html">Attendants</a>
+          <a class="nav-link" href="products.html">Products</a>
+          <a class="nav-link" href="sales.html"> Add Sales</a>
+          <a class="nav-link" href="salestable.html">Sales</a>
+          <a class="nav-link" href="stock.html">Add Stock</a>
+          <a class="nav-link" href=".html">Stock</a>
+        </div>
       </div>
     </div>
-  </div>
-</nav>
+  </nav>
 
-  <div class="container"></div>
-  <main>
+  <div class="container">
     <div class="cards">
       <div class="card">
-        <h3>Total Stock</h3>
-        <p>150 items</p>
+        <h3>Total Revenue</h3>
+        <p>UGX 12,500,000</p>
       </div>
 
       <div class="card">
-        <h3>Sales Today</h3>
-        <p>UGX 450,000</p>
+        <h3>Monthly Sales</h3>
+        <p>420</p>
       </div>
 
       <div class="card">
-        <h3>Pending Deliveries</h3>
-        <p>3 Orders</p>
+        <h3>Top Item</h3>
+        <p>Office Desk</p>
+      </div>
+
+      <div class="card">
+        <h3>Low Stock Items</h3>
+        <p>7</p>
       </div>
     </div>
 
     <div class="charts">
-      <div class="chart-container">
-        <h3>Sales Trend (Last 7 Days)</h3>
-        <canvas id="salesChart"></canvas>
-      </div><br><br><br>
+      <div class="chart-box">
+        <h3>Monthly Revenue Trend</h3>
+        <canvas id="revenueChart"></canvas>
+      </div>
 
-      <div class="chart-container">
-        <h3>Top Selling Products</h3>
-        <canvas id="productsChart"></canvas>
+      <div class="chart-box">
+        <h3>Top Selling Items</h3>
+        <canvas id="topItemsChart"></canvas>
+      </div>
+
+      <div class="chart-box">
+        <h3>Sales Growth</h3>
+        <canvas id="growthChart"></canvas>
       </div>
     </div>
 
-    <div class="table-container">
-      <h3>Reports</h3>
-      <table>
-        <tr>
-          <th>Customer</th>
-          <th>Product</th>
-          <th>Qty</th>
-          <th>Total</th>
-          <th>Date</th>
-        </tr>
-        <tr>
-          <td>Jane</td>
-          <td>Office Chair</td>
-          <td>2</td>
-          <td>315,000 UGX</td>
-          <td>2025-07-27</td>
-        </tr>
-        <tr>
-          <td>David</td>
-          <td>Wooden Desk</td>
-          <td>1</td>
-          <td>250,000 UGX</td>
-          <td>2025-07-26</td>
-        </tr>
-      </table>
+    <div class="tables">
+      <div class="table-box">
+        <h3>Recent Sales</h3>
+
+        <table>
+          <thead>
+            <tr>
+              <th>Date</th>
+              <th>Item</th>
+              <th>Qty</th>
+              <th>Total (UGX)</th>
+            </tr>
+          </thead>
+          <tbody>
+
+            <tr>
+              <td>2025-09-20</td>
+              <td>Office Desk</td>
+              <td>2</td>
+              <td>1,200,000</td>
+            </tr>
+
+            <tr>
+              <td>2025-09-19</td>
+              <td>Chair</td>
+              <td>5</td>
+              <td>750,000</td>
+            </tr>
+
+          </tbody>
+        </table>
+      </div>
+
+      <div class="table-box">
+        <h3>Stock Overview</h3>
+        <table>
+          <thead>
+
+            <tr>
+              <th>Item</th>
+              <th>In Stock</th>
+              <th>Reorder Level</th>
+            </tr>
+          </thead>
+          <tbody>
+
+            <tr>
+              <td>Timber</td>
+              <td>80</td>
+              <td>30</td>
+            </tr>
+
+            <tr>
+              <td>Office Desk</td>
+              <td>15</td>
+              <td>10</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
     </div>
-  </main>
   </div>
-  <footer class="bg-white p-4 mt-10 text-center text-sm text-gray-400 border-t">
-    © 2025 Mayondo. All rights reserved.
+
+  <footer class="footer">
+    <p>&copy; 2025 MWF Company | All Rights Reserved</p>
+    <div class="social-icons">
+      <a href="#"><i class="fab fa-facebook-f"></i></a>
+      <a href="#"><i class="fab fa-twitter"></i></a>
+      <a href="#"><i class="fab fa-linkedin-in"></i></a>
+    </div>
   </footer>
-  <script src="/script/manager.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="/public/scripts/manager.js"></script>
+
 </body>
 
 </html>

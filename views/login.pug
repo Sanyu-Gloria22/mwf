@@ -1,0 +1,31 @@
+doctype html
+head
+  meta(charset='UTF-8')
+  meta(name='viewport' content='width=device-width, initial-scale=1.0')
+  title Mwf-login
+  link(rel='stylesheet' href='/css/login.css')
+  link(rel='stylesheet' href='https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css')
+  link(rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css')
+form#login-form(action="/login" method="POST")
+  .main
+    .container
+      .apply-box
+        h1
+          | Login
+          span
+      br
+      br
+    .mb-4
+      label.form-label(for='email') Email address
+      input#email.form-control(type='email' name="email")
+    .mb-4.position-relative
+      label.form-label(for='password') Password
+      input#password.form-control(type='password' name="password")
+      span.toggle-password(onclick='togglePassword()')
+        i#toggleIcon.fa-solid.fa-eye
+    .mb-4.form-check(style=' margin: auto; margin-right: 0; width: fit-content; display: block;')
+      input#exampleCheck1.form-check-input(type='checkbox')
+      label.form-check-label(for='exampleCheck1') Forgot password
+  button.btn1(type='submit') Login
+script(src='https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js')
+//- script(src='/scripts/form.js')

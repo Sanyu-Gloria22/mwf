@@ -54,7 +54,7 @@ document.querySelectorAll('.dropdown-item').forEach(item => {
 
 
 function togglePassword() {
-  const passwordField = document.getElementById("exampleInputPassword1");
+  const passwordField = document.getElementById("password");
   const icon = document.getElementById("toggleIcon");
 
   if (passwordField.type === "password") {

@@ -10,4 +10,4 @@ router.post("/sales", (req, res) =>{
   console.log(req.body);
 });
 
-module.exports = router
+module.exports = router;
