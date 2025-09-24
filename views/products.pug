@@ -1,0 +1,84 @@
+doctype html
+head
+  meta(charset='UTF-8')
+  meta(name='viewport' content='width=device-width, initial-scale=1.0')
+  title Products
+  link(rel='stylesheet' href='/css/product.css')
+  link(rel='stylesheet' href='https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css')
+  link(rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css')
+nav.navbar.navbar-expand-lg
+  .container-fluid
+    a.navbar-brand(href='#') MWF
+    button.navbar-toggler(type='button' data-bs-toggle='collapse' data-bs-target='#navbarNavAltMarkup' aria-controls='navbarNavAltMarkup' aria-expanded='false' aria-label='Toggle navigation')
+      span.navbar-toggler-icon
+    #navbarNavAltMarkup.collapse.navbar-collapse
+      .navbar-nav
+        a.nav-link.active(aria-current='page' href='manager.html') Dashboard
+        a.nav-link(href='manager.html') Users
+        a.nav-link(href='attendants.html') Attendants
+        a.nav-link(href='products.html') Products
+        a.nav-link(href='sales.html')  Add Sales
+        a.nav-link(href='salestable.html') Sales
+        a.nav-link(href='stock.html') Add Stock
+        a.nav-link(href='.html') Stock
+h3 Timbers
+.row.row-cols-1.row-cols-md-3.g-4
+  .col
+    .card.h-100
+      img.card-img-top(src='/public/images/wood (2).jpeg' alt='...')
+      .card-body
+        h5.card-title Plywood
+  .col
+    .card.h-100
+      img.card-img-top(src='/public/images/wood08.jpeg' alt='...')
+      .card-body
+        h5.card-title Spruce
+  .col
+    .card.h-100
+      img.card-img-top(src='/public/images/wood3.jpeg' alt='...')
+      .card-body
+        h5.card-title Mahogany
+h3 Furniture Products
+.row.row-cols-1.row-cols-md-3.g-4
+  .col
+    .card.h-100
+      img.card-img-top(src='/public/images/Bed.jpeg' alt='...')
+      .card-body
+        h5.card-title Bed
+  .col
+    .card.h-100
+      img.card-img-top(src='/public/images/Cambourne Stowaway Dining Set 2.jpeg' alt='...')
+      .card-body
+        h5.card-title Cambourne Stowaway Dining Set
+  .col
+    .card.h-100
+      img.card-img-top(src='/public/images/Wordrobe- Dressing Comb 2 Door - EcoPlast (4).jpeg' alt='...')
+      .card-body
+        h5.card-title Wordrobe- Dressing Comb 2 Door - EcoPlast 
+h3 Raw Materials
+.row.row-cols-1.row-cols-md-3.g-4
+  .col
+    .card.h-100
+      img.card-img-top(src='/public/images/Rw1.jpeg' alt='...')
+      .card-body
+        h5.card-title Pine
+  .col
+    .card.h-100
+      img.card-img-top(src='/public/images/rw2.jpeg' alt='...')
+      .card-body
+        h5.card-title Mahogany
+  .col
+    .card.h-100
+      img.card-img-top(src='/public/images/Poles 2.jpeg' alt='...')
+      .card-body
+        h5.card-title Birch wood
+footer.footer
+  p &copy; 2025 MWF Company | All Rights Reserved
+  .social-icons
+    a(href='https://www.facebook.com' target='_blank')
+      i.fab.fa-facebook-f
+    a(href='https://twitter.com' target='_blank')
+      i.fab.fa-twitter
+    a(href='https://www.linkedin.com' target='_blank')
+      i.fab.fa-linkedin-in
+script(src='https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js')

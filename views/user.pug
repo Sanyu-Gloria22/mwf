@@ -1,0 +1,61 @@
+doctype html
+head
+  meta(charset='UTF-8')
+  meta(name='viewport' content='width=device-width, initial-scale=1.0')
+  title Users
+  link(rel='stylesheet' href='/css/user.css')
+  link(rel='stylesheet' href='https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css')
+  link(href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css' rel='stylesheet')
+nav.navbar.navbar-expand-lg
+  .container-fluid
+    a.navbar-brand(href='#') MWF
+    button.navbar-toggler(type='button' data-bs-toggle='collapse' data-bs-target='#navbarNavAltMarkup' aria-controls='navbarNavAltMarkup' aria-expanded='false' aria-label='Toggle navigation')
+      span.navbar-toggler-icon
+    #navbarNavAltMarkup.collapse.navbar-collapse
+      .navbar-nav
+        a.nav-link(href='manager.html') Dashboard
+        a.nav-link.active(aria-current='page' href='attendants.html') Users
+        a.nav-link(href='attendants.html') Attendants
+        a.nav-link(href='products.html') Products
+        a.nav-link(href='sales.html')  Add Sales
+        a.nav-link(href='salestable.html') Sales
+        a.nav-link(href='stock.html') Add Stock
+        a.nav-link(href='.html') Stock
+header
+  h2 Mayondo Wood &amp; Furniture User Management
+.container
+  table
+    thead
+      tr
+        th Name
+        th Email
+        th Role
+        th Actions
+    tbody
+      tr
+        td Sanyu Gloria.
+        td sanyu@company.com
+        td
+          span.role.manager Manager
+        td
+          button.btn.edit-btn Edit
+          button.btn.delete-btn Delete
+      tr
+        td Grace Nakimera.
+        td grace@company.com
+        td
+          span.role.attendant Attendant
+        td
+          button.btn.edit-btn Edit
+          button.btn.delete-btn Delete
+script(src='../script/form.js')
+script(src='https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js')
+footer.footer
+  p &copy; 2025 MWF Company | All Rights Reserved
+  .social-icons
+    a(href='https://www.facebook.com' target='_blank')
+      i.fab.fa-facebook-f
+    a(href='https://twitter.com' target='_blank')
+      i.fab.fa-twitter
+    a(href='https://www.linkedin.com' target='_blank')
+      i.fab.fa-linkedin-in

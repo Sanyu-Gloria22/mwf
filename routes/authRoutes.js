@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-// const passport = require("passport")
+const passport = require("passport");
 
 const UserModel = require("../models/userModel");
 
@@ -13,29 +13,57 @@ router.get("/signup", (req, res) =>{
   res.render("signUp",{title: "signUp page"})
 });
 
-router.post("/signup", (req, res) =>{
-  const user = new UserModel(req.body);
-  user.save()
-  console.log(req.body);
-  res.redirect("/login");
+router.post("/signup", async(req, res) =>{
+  try {
+    const user = new UserModel(req.body);
+    console.log(req.body);
+    let existingUser = await UserModel.findOne({emailAddress:req.body.emailAdress});
+    if(existingUser){
+      return res.status(400).send("EmailAddress already registered, try using another one")
+    }else{
+      await UserModel.register(user,req.body.password,(error) =>{
+        if(error){
+          throw error;
+        }
+        res.redirect("/login");
+      })
+    }
+  } catch (error) {
+    req.status(400).send("Something went wrong");
+  }
 });
 
-router.get("/sales", (req, res) =>{
-  res.render("sales",{title: "sales page"})
-});
-
-router.post("/sale", (req, res) =>{
-  console.log(req.body);
-});
 
 router.get("/login", (req, res)=>{
   res.render("login",{title: "login page"});
 });
 
-router.post("/login", (req, res) =>{
-  console.log(req.body);
+router.post("/login", passport.authenticate("local", {failureRedirect:'/login'}), (req, res) =>{
+req.session.user = req.user;
+if(req.user.role === "Manager") {
   res.redirect("/manager")
+}else if(req.user === "Attendant") {
+  res.redirect("/attendant")
+}else (res.render("nonuser"))
 });
+
+router.get("/manager", (req, res) =>{
+  res.render("manager");
+});
+
+router.get("/attendant", (req, res) =>{
+  res.render("attendant");
+});
+
+router.get("/product", (req, res) =>{
+  res.render("product");
+});
+
+router.get("/user", (req, res) =>{
+  res.render("user");
+});
+
+
 
 
 

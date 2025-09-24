@@ -1,0 +1,66 @@
+doctype html
+head
+  meta(charset='UTF-8')
+  meta(name='viewport' content='width=device-width, initial-scale=1.0')
+  title Attendants
+  link(rel='stylesheet' href='/css/attendants.css')
+  link(rel='stylesheet' href='https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css')
+  link(href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css' rel='stylesheet')
+nav.navbar.navbar-expand-lg
+  .container-fluid
+    a.navbar-brand(href='#') MWF
+    button.navbar-toggler(type='button' data-bs-toggle='collapse' data-bs-target='#navbarNavAltMarkup' aria-controls='navbarNavAltMarkup' aria-expanded='false' aria-label='Toggle navigation')
+      span.navbar-toggler-icon
+    #navbarNavAltMarkup.collapse.navbar-collapse
+      .navbar-nav
+        a.nav-link(href='manager.html') Dashboard
+        a.nav-link(href='manager.html') Users
+        a.nav-link.active(aria-current='page' href='attendants.html') Attendants
+        a.nav-link(href='products.html') Products
+        a.nav-link(href='sales.html')  Add Sales
+        a.nav-link(href='salestable.html') Sales
+        a.nav-link(href='stock.html') Add Stock
+        a.nav-link(href='.html') Stock
+main
+  .cards
+    .card
+      h3 Total Stock
+      p 150 items
+    .card
+      h3 Sales Today
+      p UGX 450,000
+    .card
+      h3 Pending Deliveries
+      p 3 Orders
+  .table-container
+    h3 Reports
+    table
+      tr
+        th Customer
+        th Product
+        th Qty
+        th Total
+        th Date
+      tr
+        td Jane
+        td Office Chair
+        td 2
+        td 315,000 UGX
+        td 2025-07-27
+      tr
+        td David
+        td Wooden Desk
+        td 1
+        td 250,000 UGX
+        td 2025-07-26
+script(src='https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js')
+footer.footer
+  p &copy; 2025 MWF Company | All Rights Reserved
+  .social-icons
+    a(href='https://www.facebook.com' target='_blank')
+      i.fab.fa-facebook-f
+    a(href='https://twitter.com' target='_blank')
+      i.fab.fa-twitter
+    a(href='https://www.linkedin.com' target='_blank')
+      i.fab.fa-linkedin-in
+script(src='/script/form.js')

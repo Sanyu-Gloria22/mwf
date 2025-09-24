@@ -17,10 +17,6 @@ const signupSchema = new mongoose.Schema({
     type:Number,
     required:true
   },
-  password:{
-    type:String,
-    required:true,
-  },
   role:{
     type:String,
     required:true
@@ -37,7 +33,7 @@ const signupSchema = new mongoose.Schema({
 });
 
 
-signupSchema.plugin(passportLocalMongoose{
+signupSchema.plugin(passportLocalMongoose,{
   usernameField:"emailAddress"
 });
 module.exports = mongoose.model("UserModel", signupSchema)

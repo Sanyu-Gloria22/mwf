@@ -1,0 +1,40 @@
+extends layouttables 
+block content
+  h2 Recorded Sales Table
+  table
+    tr
+      th Customer Name
+      th Product Type
+      th Product Name
+      th Quantity
+      th Price Per Unit
+      th Transport?
+      th Total Price
+      th Payment Method
+      th Sales Agent
+      th Date
+    tr
+      td Jean Kawa
+      td Furniture
+      | a
+      td Bed
+      td 1
+      td 1000,000 UGX
+      td Yes
+      td 1000,000 UGX
+      td Cash
+      td Brian
+      td 2025-07-27
+  .button-container
+    button.btn.btn-primary.btn-lg(type='button') Record Sales
+    button.btn.btn-primary.btn-lg(type='button') Record Sales
+  footer.footer
+    p &copy; 2025 MWF Company | All Rights Reserved
+    .social-icons
+      a(href='https://www.facebook.com' target='_blank')
+        i.fab.fa-facebook-f
+      a(href='https://twitter.com' target='_blank')
+        i.fab.fa-twitter
+      a(href='https://www.linkedin.com' target='_blank')
+        i.fab.fa-linkedin-in
+  script(src='https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js')

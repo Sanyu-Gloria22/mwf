@@ -17,10 +17,7 @@ router.post("/stock", async (req, res) =>{
   }
 });
 
-router.get("/manager", (req, res) =>{
-  res.render("manager");
+router.get("/stocklist", (req, res) =>{
+  res.render("stocklist",{title: "stocklist page"})
 });
-
-
-
 module.exports = router;

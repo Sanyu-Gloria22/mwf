@@ -1,0 +1,40 @@
+extends layouttables 
+block content
+  h2 MWF Stocklist
+  table
+    thead
+      tr
+        th Product Name
+        th Product Type
+        th Cost Price
+        th Selling Price
+        th Quantity
+        th Supplier&apos;s Name
+        th Date Received
+        th Quality
+        th Color
+        th Measurements
+    tbody
+      tr
+        td Mahogany Timber
+        td Wood
+        td 70,000
+        td 110,000
+        td 50
+        td Jacob Hadi
+        td 07/02/2025
+        td High
+        td Redish
+        td 10ft x 6in
+  .button-container
+    button.btn.btn-primary.btn-lg(type='button') Add Stock
+  footer.footer
+    p &copy; 2025 MWF Company | All Rights Reserved
+    .social-icons
+      a(href='https://www.facebook.com' target='_blank')
+        i.fab.fa-facebook-f
+      a(href='https://twitter.com' target='_blank')
+        i.fab.fa-twitter
+      a(href='https://www.linkedin.com' target='_blank')
+        i.fab.fa-linkedin-in
+  script(src='https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js')
