@@ -7,8 +7,8 @@ body {
 }    
   
 .navbar {
- background: #2c3e50;
-  color: white;
+ background: #3d1f12;
+  color: #f1eada;
   padding: 15px;
   display: flex;
   justify-content: space-between;
@@ -17,19 +17,19 @@ body {
 }
 
 .navbar {
-  background-color: rgb(195, 103, 40);
+  background-color: #3d1f12;
 }
 
 .navbar-brand,
 .navbar-nav .nav-link {
-  color: white;
+  color: #f1eada;
   font-weight: 500;
   transition: 0.3s;
 }
 
 .navbar-nav .nav-link:hover {
-  background-color: white;
-  color: rgb(195, 103, 40);
+  background-color: #f1eada;
+  color: #3d1f12;
   padding: 5px 10px;
   border-radius: 5px;
 }
@@ -39,15 +39,24 @@ body {
   padding: 20px;
 }
 
+h2{
+  color: #3d1f12 !important;
+  font-family: "Times New Roman", serif;
+  font-style: italic;
+  text-shadow: 2px 2px 5px ;
+  font-size: 36px;
+}
+
 .cards {
   display: grid;
+  background: #584738;
   grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
   gap: 15px;
   margin-bottom: 20px;
 }
 
 .card {
-  background: white;
+  background: #584738;
   padding: 20px;
   border-radius: 10px;
   box-shadow: 0 2px 6px rgba(0,0,0,0.1);
@@ -92,7 +101,7 @@ body {
 }
 
 .table-box {
-  background: white;
+  background: #987558;
   padding: 15px;
   border-radius: 10px;
   box-shadow: 0 2px 6px rgba(0,0,0,0.1);
@@ -112,7 +121,7 @@ th, td {
 }
 
 th {
-  background: #f4f6f8;
+  background: #3d1f12;
 }
 
 .footer {
@@ -127,7 +136,7 @@ th {
 
 
 .footer a:hover {
-  color: rgb(195, 103, 40);
+  color: #3d1f12;
 }
 
 .social-icons {
@@ -141,15 +150,15 @@ th {
   line-height: 35px;
   margin: 0 5px;
   border-radius: 50%;
-  background: rgb(195, 103, 40);
-  color: white;
+  background: #3d1f12;
+  color: #f1eada;
   font-size: 16px;
   transition: 0.3s;
 }
 
 .social-icons a:hover {
-  background: white;
-  color: rgb(195, 103, 40);
+  background: #f1eada;
+  color: #3d1f12;
 }
 
 

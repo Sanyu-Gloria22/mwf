@@ -64,12 +64,41 @@ h3 {
 
 
 
-footer {
-  background-color: rgb(125, 12, 69);
-  color: white;
+.footer {
+  bottom: 0;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  color: #ddd;
   text-align: center;
-  padding: 15px;
-  margin-top: 40px;
+  padding: 15px 0;
+  font-size: 14px;
+}
+
+
+.footer a:hover {
+  color: rgb(195, 103, 40);
+}
+
+.social-icons {
+  margin-top: 10px;
+}
+
+.social-icons a {
+  display: inline-block;
+  width: 35px;
+  height: 35px;
+  line-height: 35px;
+  margin: 0 5px;
+  border-radius: 50%;
+  background: rgb(195, 103, 40);
+  color: white;
+  font-size: 16px;
+  transition: 0.3s;
+}
+
+.social-icons a:hover {
+  background: white;
+  color: rgb(195, 103, 40);
 }
 
 @media (max-width: 576px) {

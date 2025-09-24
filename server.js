@@ -11,7 +11,6 @@ const UserModel = require("./models/userModel");
 const salesRoutes = require("./routes/salesRoutes");
 const authRoutes = require("./routes/authRoutes");
 const stockRoutes = require("./routes/stockRoutes");
-
 //installations
 const app = express();
 const port = 3001;

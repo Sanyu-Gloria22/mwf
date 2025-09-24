@@ -8,7 +8,7 @@ block content
         input(type='text' name='productName')
       label(for='productType')
         | Product Type:
-        input(type='text' name='category')
+        input(type='text' name='productType')
       label(for='quantity')
         | Quantity:
         input(type='number' name='quantity')
@@ -17,19 +17,28 @@ block content
         input(type='number' name='costPrice')
       label(for='quality')
         | Quality:
-        input(type='text' name='quality')
+        select(name='quality')
+          option(value="High") High
+          option(value="Strong") Strong
+          option(value="Basic") Basic
+          option(value="Smooth") Smooth
+          option(value="Lightweight") Lightweight
+          option(value="stable") Stable
       label(for='color')
         | Color:
         input(type='text' name='color')
       label(for='measurements')
         | Measurements:
-        input(type='text' name='measurements')
+        select(name='measurement')
+          option(value="Low") Low
+          option(value="High") High
+          option(valuer="Medium") Medium
       label
         | Date:
         input(type='date' name='date')
       label(for='SupplierName')
         | Supplier&apos;s Name:
-        input(type='text' name='SupplierName')
+        input(type='text' name='supplierName' value="" required)
       button(type='submit') Add Stock
   script(src='/Js/form.js')
   script(src='https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js')

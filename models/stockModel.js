@@ -1,10 +1,6 @@
 const mongoose = require("mongoose");
 
 const stockSchema = new mongoose.Schema({
-  customer:{
-    type:String,
-    required:true
-  },
   productName:{
     type:String,
     required:true,
@@ -12,33 +8,36 @@ const stockSchema = new mongoose.Schema({
     trim:true
   },
   productType:{
-    type:Number,
+    type:String,
     required:true
   },
   quantity:{
     type:String,
     required:true,
   },
-  pricePerUnit:{
+  costPrice:{
     type:String
   },
-  dateOfSale:{
+  quanlity:{
+    type:String,
+    require:true
+  },
+  color:{
     type:String,
     required:true
   },
-  paymentMethode:{
-    type:String
+  measurement:{
+    type:String,
+    required:true,
   },
-  salesAgentName:{
+  date:{
     type:String,
     required:true
   },
-  transport:{
+  supplierName:{
     type:String,
     required:true
-  },
-
-
+  }
 });
 
 
