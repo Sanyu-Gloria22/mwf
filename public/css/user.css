@@ -12,91 +12,121 @@ body {
 }
 
 .navbar {
-  background-color: rgb(125, 12, 69);
+  background-color: #452815;
 }
 
 .navbar-brand,
 .navbar-nav .nav-link {
-  color: white;
+  color: #e0c4a0;
   font-weight: 500;
   transition: 0.3s;
 }
 
 .navbar-nav .nav-link:hover {
-  background-color: white;
-  color: rgb(125, 12, 69);
+  background-color: #e0c4a0;
+  color: #452815;
   padding: 5px 10px;
   border-radius: 5px;
 }
-
-header {
-  background: white;
-  color: rgb(125, 12, 69);
-  padding: 20px;
-  text-align: center;
+h2{
+  color: #452815 !important;
+  font-family: "Times New Roman", serif;
+  font-style: italic;
+  text-shadow: 2px 2px 5px ;
+  font-size: 36px;
 }
 
-h2 {
-  text-align: center;
-  margin-bottom: 20px;
+.container {
+  max-width: 900px;
+  margin: auto;
+  background-color: #e0c4a0;
+  border-radius: 6px;
+  overflow: hidden;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+.header {
+  background-color: #73411f;
+  color: white;
+  padding: 15px;
+  font-size: 1.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header button {
+  background-color: #fff;
+  color: #452815;
+  border: none;
+  border-radius: 4px;
+  font-weight: bold;
+  padding: 8px 12px;
+  cursor: pointer;
+}
+
+.search-bar {
+  padding: 10px 15px;
+  border-bottom: 1px solid #e0c4a0;
+}
+
+.search-bar input {
+  width: 100%;
+  padding: 8px 12px;
+  font-size: 1rem;
+  border: 1px solid #e0c4a0;
+  border-radius: 4px;
 }
 
 table {
   width: 100%;
   border-collapse: collapse;
+  text-align: left;
+  font-size: 1rem;
 }
 
-th,td {
-  padding: 12px 16px;
-  text-align: left;
+th, td {
+  padding: 12px 15px;
   border-bottom: 1px solid #ddd;
 }
 
 th {
-  background-color: rgb(125, 12, 69);
+  background-color: #e0c4a0;
 }
 
-.role {
-  padding: 4px 8px;
-  border-radius: 5px;
-  font-size: 0.85rem;
-  color: white;
+.profile-img {
+  width: 50px;
+  height: 50px;
+  border-radius: 6px;
+  object-fit: cover;
 }
 
-.admin {
-  background-color: #d9534f;
-}
-
-.manager {
-  background-color: #5bc0de;
-}
-
-.attendant {
-  background-color: #5cb85c;
-}
-
-.btn {
-  padding: 6px 12px;
-  font-size: 0.9rem;
+.action-btn {
   border: none;
-  border-radius: 5px;
+  padding: 6px 10px;
+  margin-right: 6px;
+  border-radius: 4px;
   cursor: pointer;
-  margin-right: 5px;
+  color: white;
+  font-size: 14px;
 }
 
-.edit-btn {
-  background-color: #0275d8;
-  color: white;
+.btn-view {
+  background-color: #28a745;
 }
 
-.delete-btn {
-  background-color: #d9534f;
-  color: white;
+.btn-edit {
+  background-color: #007bff;
 }
+
+.btn-delete {
+  background-color: #dc3545;
+}
+
 .footer {
   bottom: 0;
   width: 100%;
-  background: rgba(0, 0, 0, 0.6);
+  background: #452815;
   color: #ddd;
   text-align: center;
   padding: 15px 0;
@@ -118,8 +148,8 @@ th {
   line-height: 35px;
   margin: 0 5px;
   border-radius: 50%;
-  background: #3d1f12;
-  color: #f1eada;
+  background: #e0c4a0;
+  color: #452815;
   font-size: 16px;
   transition: 0.3s;
 }

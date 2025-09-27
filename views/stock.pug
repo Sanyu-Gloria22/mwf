@@ -15,6 +15,9 @@ block content
       label(for='costPrice')
         | Cost Price:
         input(type='number' name='costPrice')
+      label(for='productPrice')
+        | Product Price:
+        input(type='number' name='productPrice')  
       label(for='quality')
         | Quality:
         select(name='quality')
@@ -32,7 +35,7 @@ block content
         select(name='measurement')
           option(value="Low") Low
           option(value="High") High
-          option(valuer="Medium") Medium
+          option(value="Medium") Medium
       label
         | Date:
         input(type='date' name='date')

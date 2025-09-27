@@ -12,62 +12,65 @@
 
 <body>
   <form id="login-form" action="/signup" method="post">
-    <div class="main">
+    <h2>Register User</h2>
 
-      <div class="container">
-        <div class="apply-box">
-          <h1>Sign Up<span></span></h1>
-        </div><br><br>
+    <div class="form-row">
+      <div class="form-group">
+        <label for="fullName">Full Name</label>
+        <input type="fullName" name="fullName" id="fullName" />
       </div>
 
-      <div class="mb-4">
-        <label for="name" class="form-label">Name</label>
-        <input type="name" class="form-control" name="name" id="name" />
+      <div class="form-group">
+        <label for="email">Email Address</label>
+        <input type="email" name="emailAddress" id="email" />
       </div>
 
+      <div class="form-group">
+        <label for="userId">User ID</label>
+        <input type="userId" name="userid" id="userId" />
+      </div>
+    </div>
 
-      <div class="mb-4">
-        <label for="email" class="form-label">Email address</label>
-        <input type="email" class="form-control" name="emailAddress" id="email" />
+    <div class="form-row">
+      <div class="form-group">
+        <label for="gender">Gender</label>
+        <input type="gender" name="gender" id="gender" />
       </div>
 
-
-      <div class="mb-4">
-        <label for="phoneNumber" class="form-label">Phone Number</label>
-        <input type="phoneNumber" class="form-control" name="phoneNumber" id="phoneNumber" />
+      <div class="form-group">
+        <label for="email">Email address</label>
+        <input type="email" name="emailAddress" id="email" />
       </div>
 
-      <div class="mb-4 position-relative">
-        <label for="password" class="form-label">Password</label>
-        <input type="password" class="form-control" name="password" id="password" />
+      <div class="form-group">
+        <label for="phoneNumber">Phone Number</label>
+        <input type="phoneNumber" name="phoneNumber" id="phoneNumber" />
+      </div>
+    </div>
+
+
+    <div class="form-row">
+      <div class="form-group position-relative">
+        <label for="password">Password</label>
+        <input type="password" name="password" id="password" />
 
         <span class="toggle-password" onclick="togglePassword()">
           <i class="fa-solid fa-eye" id="toggleIcon"></i>
         </span>
       </div>
 
-
-      <div class="mb-3">
-        <label for="roleDropdown" class="form-label">Select Role</label>
-        <div class="dropdown">
-          <button class="btn btn-custom dropdown-toggle w-100" type="button" id="roleDropdown" data-bs-toggle="dropdown"
-            aria-expanded="false">
-            -- Choose Role --
-          </button>
-          <ul class="dropdown-menu w-100" aria-labelledby="roleDropdown">
-            <li><a class="dropdown-item" href="#" data-value="manager">Manager</a></li>
-            <li><a class="dropdown-item" href="#" data-value="attendant">Attendant</a></li>
-          </ul>
-        </div>
-
-
-        <div class="mb-4 form-check" style=" margin: auto; margin-right: 0; width: fit-content; display: block;">
-          <input type="checkbox" class="form-check-input" id="exampleCheck1" />
-          <label class="form-check-label" for="exampleCheck1">Forgot password</label>
-        </div>
+      <div class="form-group">
+        <label for="confirmPassword">Confirm Password</label>
+        <input type="password" id="confirmPassword" name="confirmPassword" required />
       </div>
 
-      <a href="manager.html" type="login" class="btn">Signup</a>
+      <div class="form-group">
+        <label for="profilePicture">Profile Picture (optional)</label>
+        <input type="file" id="profilePicture" name="profilePicture" accept="image/*" />
+      </div>
+    </div>
+
+    <button type="submit">Register Attendant</button>
   </form>
 
 

@@ -4,7 +4,6 @@ const stockSchema = new mongoose.Schema({
   productName:{
     type:String,
     required:true,
-    unique:true,
     trim:true
   },
   productType:{
@@ -12,15 +11,19 @@ const stockSchema = new mongoose.Schema({
     required:true
   },
   quantity:{
-    type:String,
+    type:Number,
     required:true,
   },
   costPrice:{
-    type:String
+    type:Number
   },
-  quanlity:{
+  productPrice:{
+    type:Number,
+    required:true
+  },
+  quality:{
     type:String,
-    require:true
+    required:true
   },
   color:{
     type:String,

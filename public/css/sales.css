@@ -15,26 +15,26 @@ body {
 }
 
 .navbar {
-  background-color: rgb(211,165,122);
+  background-color: #452815;
 }
 
 .navbar-brand,
 .navbar-nav .nav-link {
-  color: white;
+  color: #E0C4A0;
   font-weight: 500;
   transition: 0.3s;
 }
 
 .navbar-nav .nav-link:hover {
-  background-color: white;
-  color: rgb(125, 12, 69);
+  background-color: #E0C4A0;
+  color: #452815;
   padding: 5px 10px;
   border-radius: 5px;
 }
 
 h2 {
   text-align: center;
-  color: white !important;
+  color: #E0C4A0 !important;
   margin: 20px 0;  
 }
 
@@ -63,8 +63,8 @@ h2 {
 }
 
 button {
-  background-color: rgb(196,102,31);
-  color: white;
+  background-color: #452815;
+  color: #E0C4A0;
   border: none;
   padding: 12px 20px;
   border-radius: px;
@@ -74,14 +74,16 @@ button {
   transition: 0.3s;
 }
 
+
 button:hover {
-  background-color: rgb(196,102,31);
+  background-color: #73411f;
+  color: #E0C4A0;
   
 }
 
 footer {
-  background-color: rgb(196,102,31);
-  color: white;
+  background-color: #452815;
+  color: #E0C4A0;
   text-align: center;
   padding: 15px;
   margin-top: 40px;

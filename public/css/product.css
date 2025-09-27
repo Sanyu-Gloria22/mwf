@@ -13,26 +13,26 @@ body {
 }
 
 .navbar {
-  background-color: rgb(125, 12, 69);
+  background-color: #452815;
 }
 
 .navbar-brand,
 .navbar-nav .nav-link {
-  color: white;
+  color: #E0C4A0;
   font-weight: 500;
   transition: 0.3s;
 }
 
 .navbar-nav .nav-link:hover {
-  background-color: white;
-  color: rgb(125, 12, 69);
+  background-color: #E0C4A0;
+  color: #452815;
   padding: 5px 10px;
   border-radius: 5px;
 }
 
 h3 {
   text-align: center;
-  color: rgb(125, 12, 69);
+  color: #452815;
   margin: 20px 0;
   text-decoration: underline;
 }
@@ -50,7 +50,7 @@ h3 {
 .card-body {
   text-align: center;
   padding: 15px;
-  background-color: rgb(125, 12, 69);
+  background-color: #73411f;
 }
 .card-title {
   font-size: 1.1rem;
@@ -68,7 +68,7 @@ h3 {
   bottom: 0;
   width: 100%;
   background: rgba(0, 0, 0, 0.6);
-  color: #ddd;
+  color: #E0C4A0;
   text-align: center;
   padding: 15px 0;
   font-size: 14px;
@@ -76,7 +76,7 @@ h3 {
 
 
 .footer a:hover {
-  color: rgb(195, 103, 40);
+  color: #73411f;
 }
 
 .social-icons {
@@ -90,15 +90,15 @@ h3 {
   line-height: 35px;
   margin: 0 5px;
   border-radius: 50%;
-  background: rgb(195, 103, 40);
-  color: white;
+  background: #452815;
+  color: #E0C4A0;
   font-size: 16px;
   transition: 0.3s;
 }
 
 .social-icons a:hover {
-  background: white;
-  color: rgb(195, 103, 40);
+  background: #E0C4A0;
+  color: #452815;
 }
 
 @media (max-width: 576px) {

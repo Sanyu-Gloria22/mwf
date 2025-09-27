@@ -17,7 +17,16 @@ router.post("/stock", async (req, res) =>{
   }
 });
 
-router.get("/stocklist", (req, res) =>{
-  res.render("stocklist",{title: "stocklist page"})
+router.get("/stocklist", async (req, res) =>{
+  try {
+    let items = await StockModel.find().sort({$natural:-1});
+    console.log(items);
+    res.render("stocklist", {items});
+  } catch (error) {
+    res.status(400).send("Unable to get data from the data base.")
+  }
 });
+
+
+
 module.exports = router;

@@ -6,26 +6,28 @@ block content
       tr
         th Product Name
         th Product Type
-        th Cost Price
-        th Selling Price
         th Quantity
-        th Supplier&apos;s Name
-        th Date Received
+        th Cost Price
+        th Product Price
         th Quality
         th Color
-        th Measurements
+        th Measurement
+        th Date
+        th Supplier's Name
     tbody
-      tr
-        td Mahogany Timber
-        td Wood
-        td 70,000
-        td 110,000
-        td 50
-        td Jacob Hadi
-        td 07/02/2025
-        td High
-        td Redish
-        td 10ft x 6in
+      if items.length 
+        each item in items 
+          tr
+            td #{item.productName}
+            td #{item.productType}
+            td #{item.quantity}
+            td #{item.costPrice}
+            td #{item.productPrice}
+            td #{item.quality}
+            td #{item.color}
+            td #{item.measurement}
+            td #{moment(item.date).format("DD-MM-YYYY")}
+            td #{item.supplierName}
   .button-container
     button.btn.btn-primary.btn-lg(type='button') Add Stock
   footer.footer

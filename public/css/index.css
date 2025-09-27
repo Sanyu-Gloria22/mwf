@@ -54,25 +54,24 @@ a.btn {
   box-sizing: border-box;
 }
 
-.buttons {
+.logs{
+  gap: 30px;
   display: flex;
-  justify-content: center;
-  gap: 24px;
-  flex-wrap: wrap;
+  
 }
 
 a.btn-login {
-  background: rgb(195, 103, 40);
+  background: #73411f;
 }
 
 a.btn-signup {
-  background: rgb(195, 103, 40);
+  background: #73411f;
 }
   
 
 a.btn:hover{
-  background-color: white;
-  color: rgb(195, 103, 40);
+  background-color: #e0c4a0;
+  color: #73411f;
 }
 
 .footer {
@@ -95,7 +94,7 @@ a.btn:hover{
 }
 
 .footer a:hover {
-  color: rgb(195, 103, 40);
+  color: #73411f;
 }
 
 /* Social icons */
@@ -110,13 +109,13 @@ a.btn:hover{
   line-height: 35px;
   margin: 0 5px;
   border-radius: 50%;
-  background: rgb(195, 103, 40);
-  color: white;
+  background: #73411f;
+  color: #e0c4a0;
   font-size: 16px;
   transition: 0.3s;
 }
 
 .social-icons a:hover {
-  background: white;
-  color: rgb(195, 103, 40);
+  background: #e0c4a0;
+  color: #73411f;
 }

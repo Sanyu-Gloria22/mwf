@@ -5,6 +5,7 @@ const mongoose = require("mongoose");
 const passport = require('passport');
 const expressSession = require('express-session');
 const MongoStore = require('connect-mongo');
+const moment = require("moment");
 
 require("dotenv").config();
 const UserModel = require("./models/userModel");
@@ -19,6 +20,8 @@ const app = express();
 const port = 3001;
 
 //configurations
+app.locals.moment = moment;
+//setting up mon
 mongoose.connect(process.env.MONGODB_URL, {
   //  useNewUrlParser: true,
   //  useUnifiedTopology: true
