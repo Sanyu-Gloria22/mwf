@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 
-const stockSchema = new mongoose.Schema({
+const salesSchema = new mongoose.Schema({
   customerName:{
     type:String,
     required:true,
@@ -18,36 +18,40 @@ const stockSchema = new mongoose.Schema({
     type:String,
     required:true,
   },
-  unitprice:{
-    type:String
-  },
-  productPrice:{
+  unitPrice:{
     type:String,
     required:true
   },
-  quality:{
-    type:String,
-    require:true
-  },
+  
   color:{
-    type:String,
-    required:true
+    type:String
   },
   measurement:{
     type:String,
     required:true,
   },
-  date:{
+  salesDate:{
     type:String,
     required:true
   },
-  supplierName:{
+  paymentMethod:{
     type:String,
     required:true
+  },
+  salesAgent:{
+    type:String,
+    required:true
+  },
+  totalPrice:{
+    type:Number,
+    required:true
+  },
+  transport:{
+    type:String,
   }
 });
 
 
 
 
-module.exports = mongoose.model("StockModel", stockSchema)
+module.exports = mongoose.model("salesModel", salesSchema)

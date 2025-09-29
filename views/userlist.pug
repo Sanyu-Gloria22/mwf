@@ -26,23 +26,34 @@ header
 .container
   .header
     | Users List
-    button(onclick='addNewUser()') + Add New
+    button(onclick='addNewUser("/userForm)') + Add New
   .search-bar
     input#searchInput(type='text' placeholder='Search Users' onkeyup='searchUsers()')
   table#usersTable
     thead
       tr
-        th Profile
         th Full Name
-        th User Name
         th EmailAddress
+        th User Name
+        th Gender
         th Role
         th Phone Number
         th Address
         th Registration Date
         th Status
-        th Action
     tbody
+      if users.length 
+        each user in users
+          tr 
+            td #{user.fullName}
+            td #{user.emailAddress}
+            td #{user.userName}
+            td #{user.gender}
+            td #{user.role}
+            td #{user.phoneNumber}
+            td #{user.address}
+            td #{user.date}
+            td #{user.status}
 footer.footer
   p &copy; 2025 MWF Company | All Rights Reserved
   .social-icons
@@ -52,5 +63,5 @@ footer.footer
       i.fab.fa-twitter
     a(href='https://www.linkedin.com' target='_blank')
       i.fab.fa-linkedin-in
-script(src='/public/scripts/user.js')
+script(src='/scripts/user.js')
 script(src='https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js')

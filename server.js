@@ -6,15 +6,17 @@ const passport = require('passport');
 const expressSession = require('express-session');
 const MongoStore = require('connect-mongo');
 const moment = require("moment");
+const methodOverride = require("method-override");
 
 require("dotenv").config();
-const UserModel = require("./models/userModel");
+const UserModel = require("./models/UserModel");
 
 
 //import routes
 const salesRoutes = require("./routes/salesRoutes");
 const authRoutes = require("./routes/authRoutes");
 const stockRoutes = require("./routes/stockRoutes");
+
 //installations
 const app = express();
 const port = 3001;
@@ -40,6 +42,8 @@ app.set("view engine", "pug");
 app.set('views', path.join(__dirname, 'views'));
 
 //Middlewares
+app.use(methodOverride("_method"));
+//using express
 app.use(express.static(path.join(__dirname, "public")));
 app.use(express.urlencoded({ extended: true })); 
 //express session configs
@@ -48,7 +52,7 @@ app.use(expressSession({
   resave: false,
   saveUninitialized: false,
   store:MongoStore.create({mongoUrl:process.env.MONGODB_URL}),
-  cookie: {maxAge:24*60*1000}
+  cookie: {maxAge:24*60*60*1000}
 }))
 
 //passport configs
@@ -62,9 +66,10 @@ passport.deserializeUser(UserModel.deserializeUser());
 
 
 //Routes
-app.use("/",salesRoutes);
 app.use("/",authRoutes);
+app.use("/",salesRoutes);
 app.use("/",stockRoutes);
+
 
 
 app.use((req, res) => {

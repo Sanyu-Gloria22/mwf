@@ -9,14 +9,6 @@ router.get("/", (req, res) => {
 });
 
 
-router.get("/signup", (req, res) =>{
-  res.render("signUp",{title: "signUp page"})
-});
-
-router.post("/signup", (req, res) =>{
-  res.redirect("/login")
-})
-
 // router.post("/signup", async(req, res) =>{
 //   try {
 //     const user = new UserModel(req.body);
@@ -68,12 +60,37 @@ router.get("/products", (req, res) =>{
 });
 
 
-router.get("/user", (req, res) =>{
-  res.render("user");
+
+
+
+router.get("/userForm", (req, res) =>{
+  res.render("userForm");
+});
+
+router.post("/userForm", async (req, res) =>{
+  try {
+    const user = new UserModel(req.body)
+      console.log(req.body);
+    await user.save();  
+    res.redirect("/getusers");
+  } catch (error) {
+    console.error(error)
+  }
+});
+
+router.get("/getusers", async (req, res) =>{
+  try {
+    let users = await UserModel.find().sort({$natural:-1});
+    console.log(users);
+    res.render("userlist", {users});
+  } catch (error) {
+    res.status(400).send("Unable to get data from the data base.")
+  }
 });
 
 
 
+module.exports = router;
 
 
 

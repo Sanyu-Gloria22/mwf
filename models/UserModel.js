@@ -2,7 +2,11 @@ const mongoose = require("mongoose");
 const passportLocalMongoose = require('passport-local-mongoose');
 
 
-const signupSchema = new mongoose.Schema({
+const userSchema = new mongoose.Schema({
+  // profile:{
+  //   type:String,
+  //   required:false
+  // },
   fullName:{
     type:String,
     required:true
@@ -13,27 +17,46 @@ const signupSchema = new mongoose.Schema({
     unique:true,
     trim:true
   },
-  phoneNumber:{
-    type:Number,
+  userName:{
+    type:String,
+    required:true,
+  },
+  // userId:{
+  //   type:Number,
+  //   required:true,
+  //   unique:true
+  // },
+  gender:{
+    type:String,
     required:true
   },
   role:{
     type:String,
     required:true
   },
-  nin:{
+  phoneNumber:{
+    type:Number,
+    required:true
+  },
+  address:{
     type:String,
     required:true
   },
-  gender:{
-    type:String
+  date:{
+    type:String,
+    required:true
+  },
+  status:{
+    type:String,
+    required:true
   },
 
-
 });
 
 
-signupSchema.plugin(passportLocalMongoose,{
+userSchema.plugin(passportLocalMongoose,{
   usernameField:"emailAddress"
 });
-module.exports = mongoose.model("UserModel", signupSchema)
+const UserModel = mongoose.models.UserModel || mongoose.model("UserModel", userSchema);
+
+module.exports = UserModel;

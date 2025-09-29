@@ -1,0 +1,51 @@
+extends layout 
+block content
+  h2 Edit Stock Form
+  .form-container
+    form(action=`/editstock/${item._id}?_method=PUT` method="POST")
+      label(for='productName')
+        | Product Name:
+        input(type='text', name='productName', value=`${item.productName}`, placeholder="Enter product Name")
+      label(for='productType')
+        | Product Type:
+        input(type='text', name='productType', value=`${item.productType}`, placeholder="Enter Product Type")
+      label(for='quantity')
+        | Quantity:
+        input(type='number', name='quantity', value=`${item.quantity}`, placeholder="Enter quantity")
+      label(for='costPrice')
+        | Cost Price:
+        input(type='number', name='costPrice', value=`${item.costPrice}`, placeholder="Enter Cost price")
+      label(for='productPrice')
+        | Product Price:
+        input(type='number', name='productPrice', value=`${item.prodctPrice}`, placeholder="Enter Product price")  
+      label(for='quality')
+        | Quality:
+        select(name='quality')
+          option(value=`${item.quality}` selected) #{item.quality} 
+          option High
+          option Strong
+          option Basic
+          option Smooth
+          option Lightweight
+          option Stable
+      label(for='color')
+        | Color:
+        input(type='text', name='color', value=`${item.color}`, placeholder="Enter Color")
+      label(for='measurements')
+        | Measurements:
+        select(name='measurement')
+          option(value=`${item.measurement}`)  #{item.measurement}
+          option Low
+          option High
+          option Medium
+      label
+        | Date:
+        input(type='text', name='date', value=`${item.date}`, placeholder="Enter date" )
+      label(for='SupplierName')
+        | Supplier&apos;s Name:
+        input(type='text' name='supplierName' value=`${item.supplierName}` required)
+      button(type='submit') Add Stock
+  script(src='/Js/form.js')
+  script(src='https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js')
+  footer
+    | &copy; 2025 Mayondo. All rights reserved.

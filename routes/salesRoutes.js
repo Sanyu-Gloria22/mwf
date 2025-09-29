@@ -1,5 +1,5 @@
 const express = require("express");
-const router = express.Router("router");
+const router = express.Router();
 
 const salesModel = require("../models/salesModel");
 router.get("/sales", (req, res) =>{
@@ -13,13 +13,14 @@ router.post("/sales", async (req, res) =>{
     await stock.save();
     res.redirect("/saleslist");
   } catch (error) {
-    console.log(error)
+    console.error("Error saving sale:", error.message);
+  res.status(400).send("Error saving data: " + error.message);
   }
 });
 
 router.get("/saleslist", async (req, res) =>{
   try {
-    let items = (await salesModel.find()).toSorted({$natural:-1});
+  let items = await salesModel.find().sort({ $natural: -1 });
     console.log(items);
     res.render("saleslist", {items});
   } catch (error) {

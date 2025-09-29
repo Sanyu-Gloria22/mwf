@@ -7,23 +7,30 @@ block content
       th Product Name
       th Product Type
       th Quantity
-      th Price Per Unit
-      th Transport?
-      th Total Price
+      th Product Price
+      th Color 
+      th Measurement
+      th Date Of Sale
       th Payment Method
-      th Sales Agent
-      th Date
-    tr
-      td 
-      td 
-      td 
-      td 
-      td 
-      td 
-      td 
-      td 
-      td 
-      td 
+      th Sales Agent 
+      th Total Price
+      th Transport
+    tbody
+      if items.length 
+        each item in items 
+          tr
+            td #{item.customerName}
+            td #{item.productName}
+            td #{item.productType}
+            td #{item.quantity}
+            td #{item.unitPrice}
+            td #{item.color }
+            td #{item.measurement}
+            td #{item.salesDate}
+            td #{item.paymentMethod}
+            td #{item.salesAgent}
+            td #{item.totalPrice}
+            td #{transport}
   .button-container
     button.btn.btn-primary.btn-lg(type='button') Record Sales
     button.btn.btn-primary.btn-lg(type='button') Record Sales

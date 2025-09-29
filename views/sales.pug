@@ -34,17 +34,26 @@ block content
         | Price Per Unit:
         input(type='number' name='unitPrice')
       label
+        | color:
+        input(type='text' name='color') 
+      label
+        | Measurement:
+        input(type='number' name='measurement')   
+      label
         | Date of Sale:
-        input(type='date' name='saleDate')
+        input(type='date' name='salesDate')
       label
         | Payment Method:
-        select(name='paymentType')
-          option Cash
-          option Cheque
-          option Bank Overdraft
+        select(name='paymentMethod')
+          option(value="Cash") Cash
+          option(value="Cheque") Cheque
+          option(value="Bank Overdraft") Bank Overdraft
       label
-        | Sales Agent Name:
-        input(type='text' name='agentName')
+        | Sales Agent:
+        input(type='text' name='salesAgent')
+      label
+        | Total Price:
+        input(type='text' name='totalPrice')  
       label
         input.checkbox(type='checkbox' name='transport')
         |         Add 5% for Transport
