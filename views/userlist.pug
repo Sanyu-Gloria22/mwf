@@ -32,6 +32,7 @@ header
   table#usersTable
     thead
       tr
+        th Profile Picture
         th Full Name
         th EmailAddress
         th User Name
@@ -45,6 +46,8 @@ header
       if users.length 
         each user in users
           tr 
+            td
+              img(src="/"+user.profilePicture, alt="User profile picture" width="100px" height="100px")
             td #{user.fullName}
             td #{user.emailAddress}
             td #{user.userName}

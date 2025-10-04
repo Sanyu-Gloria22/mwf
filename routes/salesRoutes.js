@@ -1,16 +1,45 @@
 const express = require("express");
 const router = express.Router();
+const {ensureauthenticated, ensureAttendant } = require("../middleware/auth");
 
 const salesModel = require("../models/salesModel");
 router.get("/sales", (req, res) =>{
   res.render("sales")
 });
 
-router.post("/sales", async (req, res) =>{
+router.post("/sales", ensureauthenticated,ensureAttendant, async (req, res) =>{
   try {
-    const stock = new salesModel(req.body)
+    const {
+      customerName,
+      productName,
+      productType,
+      quantity,
+      unitPrice,
+      color,
+      measurement,
+      salesDate,
+      paymentMethod,
+      totalPrice,
+      transport
+    } = req.body;
+    const userId = req.session.user._Id;
+
+    const sale = new salesModel({
+      customerName,
+      productName,
+      productType,
+      quantity,
+      unitPrice,
+      color,
+      measurement,
+      salesDate,
+      paymentMethod,
+      salesAgent: userId,
+      totalPrice,
+      transport
+    });
       console.log(req.body);
-    await stock.save();
+    await sale.save();
     res.redirect("/saleslist");
   } catch (error) {
     console.error("Error saving sale:", error.message);

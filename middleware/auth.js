@@ -7,7 +7,7 @@ exports.ensureauthenticated = (req, res, next) =>{
 };
 
 //ensure user is a salesagent
-exports.ensureAgent = (req, res, next) =>{
+exports.ensureAttendant = (req, res, next) =>{
   if(req.session.user && req.session.user.role==="Attendant"){
     return next()
   }
@@ -15,9 +15,9 @@ exports.ensureAgent = (req, res, next) =>{
 }
 
 //ensure user is a manager
-exports.ensurManager = (req, res, next) =>{
-  if(req.session.user){
+exports.ensureManager = (req, res, next) =>{
+  if(req.session.user && req.session.user.role==="Manager"){
     return next()
   }
-  res.redirect("/login")    
+  res.redirect("/")    
 }

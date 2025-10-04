@@ -14,29 +14,43 @@ nav.navbar.navbar-expand-lg
     #navbarNavAltMarkup.collapse.navbar-collapse
       .navbar-nav
         a.nav-link.active(aria-current='page' href='manager.html') Dashboard
-        a.nav-link(href='manager.html') Users
-        a.nav-link(href='attendants.html') Attendants
-        a.nav-link(href='products.html') Products
-        a.nav-link(href='sales.html')  Add Sales
-        a.nav-link(href='salestable.html') Sales
-        a.nav-link(href='stock.html') Add Stock
-        a.nav-link(href='.html') Stocklist
-        a.nav-link(href='.html') Report
+        a.nav-link(href='/getusers') Users
+        a.nav-link(href='/attendant') Attendants
+        a.nav-link(href='/products') Products
+        a.nav-link(href='/sales')  Add Sales
+        a.nav-link(href='/saleslist') Sales
+        a.nav-link(href='/stock') Add Stock
+        a.nav-link(href='/stocklist') Stocklist
+        a.nav-link(href='/report') Report
 .container
   h2 Manager's Dashboard
   .cards
     .card
-      h3 Total Revenue
-      p UGX 12,500,000
+      h3 Furniture
+      p Total Items: #{furnitureTotals.totalItems}
+      p Total Value: UGX #{furnitureTotals.totalValue.toLocaleString()}
+
     .card
-      h3 Monthly Sales
-      p 420
+      h3 Wood
+      p Total Items: #{woodTotals.totalItems}
+      p Total Value: UGX #{woodTotals.totalValue.toLocaleString()}
+        //- p   #{totalExpensePoles.totalCost} Shs
+        //- p   #{totalExpenseChair.totalCost} Shs
     .card
       h3 Top Item
-      p Office Desk
+      p Office Desk  
     .card
       h3 Low Stock Items
       p 7
+    .card
+      h3 Top Item
+      p Office Desk  
+    .card
+      h3 Total Sales
+      p #{totalSales}
+    .card
+      h3 Top Item
+      p Office Desk
   .charts
     .chart-box
       h3 Monthly Revenue Trend
@@ -59,15 +73,15 @@ nav.navbar.navbar-expand-lg
             th Total (UGX)
         tbody
           tr
-            td 2025-09-20
-            td Office Desk
-            td 2
-            td 1,200,000
+            td 
+            td 
+            td 
+            td 
           tr
-            td 2025-09-19
-            td Chair
-            td 5
-            td 750,000
+            td 
+            td 
+            td 
+            td 
     .table-box
       h3 Stock Overview
       table
@@ -78,13 +92,13 @@ nav.navbar.navbar-expand-lg
             th Reorder Level
         tbody
           tr
-            td Timber
-            td 80
-            td 30
+            td 
+            td 
+            td 
           tr
-            td Office Desk
-            td 15
-            td 10
+            td 
+            td 
+            td 
 footer.footer
   p &copy; 2025 MWF Company | All Rights Reserved
   .social-icons
@@ -95,4 +109,4 @@ footer.footer
     a(href='https://www.linkedin.com' target='_blank')
       i.fab.fa-linkedin-in
 script(src='https://cdn.jsdelivr.net/npm/chart.js')
-script(src='/public/scripts/manager.js')
+script(src='/public/scripts/manager.js')        Help me withe indentation 

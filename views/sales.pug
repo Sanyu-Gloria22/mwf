@@ -38,7 +38,7 @@ block content
         input(type='text' name='color') 
       label
         | Measurement:
-        input(type='number' name='measurement')   
+        input(type='text' name='measurement')   
       label
         | Date of Sale:
         input(type='date' name='salesDate')
@@ -48,9 +48,9 @@ block content
           option(value="Cash") Cash
           option(value="Cheque") Cheque
           option(value="Bank Overdraft") Bank Overdraft
-      label
-        | Sales Agent:
-        input(type='text' name='salesAgent')
+      //- label
+      //-   | Sales Agent:
+      //-   input(type='text' name='salesAgent')
       label
         | Total Price:
         input(type='text' name='totalPrice')  

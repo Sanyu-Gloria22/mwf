@@ -3,12 +3,17 @@ block content
   h2 Stock Recording
   .form-container
     form(action="/stock" method="POST")
-      label(for='productName')
-        | Product Name:
-        input(type='text' name='productName')
       label(for='productType')
         | Product Type:
-        input(type='text' name='productType')
+        select(type='text' name='productType')
+          option(value="" disabled selected) 
+          option(value="Wood") Wood
+          option(value="Funiture") Furniture
+          option(value="HardWood") Hard Wood
+          option(value="SoftWood") SoftWood
+      label(for='productName')
+        | Product Name:
+        input(type='text' name='productName')  
       label(for='quantity')
         | Quantity:
         input(type='number' name='quantity')
@@ -16,11 +21,12 @@ block content
         | Cost Price:
         input(type='number' name='costPrice')
       label(for='productPrice')
-        | Product Price:
+        | Total Price:
         input(type='number' name='productPrice')  
       label(for='quality')
         | Quality:
         select(name='quality')
+          option(value="" disabled selected) 
           option(value="High") High
           option(value="Strong") Strong
           option(value="Basic") Basic

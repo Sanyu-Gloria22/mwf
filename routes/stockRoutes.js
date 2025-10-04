@@ -1,12 +1,12 @@
 const express = require("express");
-const router = express.Router("router");
-const {ensureauthenticated,ensureManager} = require("../middleware/auth");
+const router = express.Router();
+// const {ensureauthenticated,ensureManager} = require("../middleware/auth");
 const StockModel = require("../models/StockModel");
-router.get("/stock", ensureManager, (req, res) =>{
+router.get("/stock", /*ensureManager,*/ (req, res) =>{
   res.render("stock");
 });
 
-router.post("/stock",ensureManager,async (req, res) =>{
+router.post("/stock",/*ensureManager,*/async (req, res) =>{
   try {
     const stock = new StockModel(req.body)
       console.log(req.body);

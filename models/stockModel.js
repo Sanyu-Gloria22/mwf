@@ -1,14 +1,14 @@
 const mongoose = require("mongoose");
 
 const stockSchema = new mongoose.Schema({
+  productType:{
+    type:String,
+    required:true
+  },
   productName:{
     type:String,
     required:true,
     trim:true
-  },
-  productType:{
-    type:String,
-    required:true
   },
   quantity:{
     type:Number,

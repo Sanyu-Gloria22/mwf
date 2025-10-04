@@ -31,10 +31,12 @@ body {
 }
 
 h3 {
+  color: #452815 !important;
+  font-family: "Times New Roman", serif;
+  font-style: italic;
+  text-shadow: 2px 2px 5px ;
+  font-size: 36px;
   text-align: center;
-  color: #452815;
-  margin: 20px 0;
-  text-decoration: underline;
 }
 
 .card:hover {
@@ -67,16 +69,15 @@ h3 {
 .footer {
   bottom: 0;
   width: 100%;
-  background: rgba(0, 0, 0, 0.6);
-  color: #E0C4A0;
+  background: #452815;
+  color: #ddd;
   text-align: center;
   padding: 15px 0;
   font-size: 14px;
 }
 
-
 .footer a:hover {
-  color: #73411f;
+  color: #3d1f12;
 }
 
 .social-icons {
@@ -90,16 +91,17 @@ h3 {
   line-height: 35px;
   margin: 0 5px;
   border-radius: 50%;
-  background: #452815;
-  color: #E0C4A0;
+  background: #e0c4a0;
+  color: #452815;
   font-size: 16px;
   transition: 0.3s;
 }
 
 .social-icons a:hover {
-  background: #E0C4A0;
-  color: #452815;
+  background: #f1eada;
+  color: #3d1f12;
 }
+
 
 @media (max-width: 576px) {
   .form-container {

@@ -39,7 +39,8 @@ const salesSchema = new mongoose.Schema({
     required:true
   },
   salesAgent:{
-    type:String,
+    type:mongoose.Schema.Types.ObjectId,
+    ref:'UserModel',
     required:true
   },
   totalPrice:{
@@ -50,7 +51,6 @@ const salesSchema = new mongoose.Schema({
     type:String,
   }
 });
-
 
 
 

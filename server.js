@@ -13,9 +13,11 @@ const UserModel = require("./models/UserModel");
 
 
 //import routes
-const salesRoutes = require("./routes/salesRoutes");
 const authRoutes = require("./routes/authRoutes");
+const managerRoutes = require("./routes/managerRoutes");
+const salesRoutes = require("./routes/salesRoutes");
 const stockRoutes = require("./routes/stockRoutes");
+const userformRoutes = require("./routes/userformRoutes")
 
 //installations
 const app = express();
@@ -45,6 +47,7 @@ app.set('views', path.join(__dirname, 'views'));
 app.use(methodOverride("_method"));
 //using express
 app.use(express.static(path.join(__dirname, "public")));
+app.use("/publics/uploads", express.static(__dirname + "/publics/uploads"));
 app.use(express.urlencoded({ extended: true })); 
 //express session configs
 app.use(expressSession({
@@ -67,8 +70,10 @@ passport.deserializeUser(UserModel.deserializeUser());
 
 //Routes
 app.use("/",authRoutes);
+app.use("/",managerRoutes);
 app.use("/",salesRoutes);
 app.use("/",stockRoutes);
+app.use("/",userformRoutes);
 
 
 

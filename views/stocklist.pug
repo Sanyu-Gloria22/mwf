@@ -4,11 +4,11 @@ block content
   table
     thead
       tr
-        th Product Name
         th Product Type
+        th Product Name
         th Quantity
         th Cost Price
-        th Product Price
+        th Total Price
         th Quality
         th Color
         th Measurement
@@ -20,8 +20,8 @@ block content
       if items.length 
         each item in items 
           tr
-            td #{item.productName}
             td #{item.productType}
+            td #{item.productName}
             td #{item.quantity}
             td #{item.costPrice}
             td #{item.productPrice}
