@@ -47,7 +47,10 @@ header
         each user in users
           tr 
             td
-              img(src="/"+user.profilePicture, alt="User profile picture" width="100px" height="100px")
+              if user.profilePicture
+                img(src="/uploads/"+user.profilePicture, alt="User profile picture", width="100px", height="100px")
+              else
+                span No Picture
             td #{user.fullName}
             td #{user.emailAddress}
             td #{user.userName}

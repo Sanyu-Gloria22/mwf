@@ -32,12 +32,17 @@ mongoose.connect(process.env.MONGODB_URL, {
 });
 
 mongoose.connection
-  .on('open', () =>{
-    console.log('Mongoose connection open');
+  .on('open', async () => {
+    console.log(' Mongoose connection open');
+
+    // Import and create default manager here after DB connects
+    const { createDefaultManager } = require("./routes/userformRoutes");
+    await createDefaultManager();
   })
   .on('error', (err) => {
     console.log(`Connection error: ${err.message}`);
   });
+
 
 // setting view engine
 app.set("view engine", "pug");
@@ -63,7 +68,7 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 //authenticate with passport local strategy
-passport.use(UserModel.createStrategy());
+passport.use(UserModel.createStrategy({ usernameField: "emailAddress" }));
 passport.serializeUser(UserModel.serializeUser());
 passport.deserializeUser(UserModel.deserializeUser());
 

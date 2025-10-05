@@ -80,14 +80,44 @@ button:hover {
   color: #E0C4A0;
   
 }
-
-footer {
-  background-color: #452815;
-  color: #E0C4A0;
+.footer {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  background: #452815;
+  color: #ddd;
   text-align: center;
-  padding: 15px;
-  margin-top: 40px;
+  padding: 15px 0;
+  font-size: 14px;
 }
+
+
+/* Change Password*/
+.card {
+  border-radius: 12px;
+  border: 1px solid #ccc;
+  background-color: #E0C4A0 !important;
+}
+
+.card h1 {
+  color: #73411f;
+}
+
+.btn-primary {
+  background-color: #73411f !important; /* MWF theme color */
+  border: none !important;
+}
+
+.btn-primary:hover {
+  color: #5a2f14 !important;
+  background-color: whitesmoke !important;
+}
+
+h1 {
+  color: #73411f;
+  font-weight: 600;
+}
+
 
 @media (max-width: 576px) {
   .form-container {
