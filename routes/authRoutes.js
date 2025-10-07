@@ -8,10 +8,6 @@ const UserModel = require("../models/userModel");
 
 
 
-router.get("/attendant", (req, res) =>{
-  res.render("attendant");
-});
-
 router.get("/", (req, res) =>{
   res.render("index");
 });
@@ -19,6 +15,23 @@ router.get("/", (req, res) =>{
 
 router.get("/products", (req, res) =>{
   res.render("products");
+});
+
+
+
+//login
+router.get("/login", (req, res) => { 
+  res.render("login")
+});
+
+router.post("/login", passport.authenticate("local", { failureRedirect: '/login' }), (req, res) => {
+  console.log("Logged in as:", req.user);
+  req.session.user = req.user;
+  if (req.user.role === "manager")
+   res.redirect("/manager");
+  else if (req.user.role === "Attendant") 
+    res.redirect("/attendant");
+  else res.render("nonuser");
 });
 
 

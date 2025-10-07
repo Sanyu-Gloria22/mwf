@@ -38,7 +38,7 @@ const salesSchema = new mongoose.Schema({
     type:String,
     required:true
   },
-  salesAgent:{
+  attendant:{
     type:mongoose.Schema.Types.ObjectId,
     ref:'UserModel',
     required:true

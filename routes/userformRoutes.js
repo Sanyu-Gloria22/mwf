@@ -4,6 +4,7 @@ const UserModel = require("../models/UserModel");
 const multer = require("multer");
 const path = require("path");
 const passport = require("passport");
+const {ensureauthenticated,ensureManager} = require("../middleware/auth");
 
 // Multer setup
 const storage = multer.diskStorage({
@@ -15,9 +16,11 @@ const storage = multer.diskStorage({
 const upload = multer({ storage });
 
 // Routes
-router.get("/userForm", (req, res) => res.render("userForm"));
+router.get("/userForm",(req, res) => {
+  res.render("userForm")
+});
 
-router.post("/userForm", upload.single("profilePicture"), async (req, res) => {
+router.post("/userForm", upload.single("profilePicture")/*, ensureManager*/,async (req, res) => {
   const { 
     fullName, 
     emailAddress, 
@@ -53,21 +56,8 @@ router.post("/userForm", upload.single("profilePicture"), async (req, res) => {
   }
 });
 
-router.get("/login", (req, res) => { 
-  res.render("login")
-});
 
-router.post("/login", passport.authenticate("local", { failureRedirect: '/login' }), (req, res) => {
-  console.log("Logged in as:", req.user);
-  req.session.user = req.user;
-  if (req.user.role === "manager")
-   res.redirect("/manager");
-  else if (req.user.role === "Attendant") 
-    res.redirect("/attendant");
-  else res.render("nonuser");
-});
-
-router.get("/getusers", async (req, res) => {
+router.get("/getusers", /*ensureManager,*/ async (req, res) => {
   try {
     const users = await UserModel.find().sort({ $natural: -1 });
     res.render("userlist", { users });
@@ -85,7 +75,7 @@ async function createDefaultManager() {
         fullName: "System Manager",
         emailAddress: "manager@mwf.com",
         userName: "manager",
-        gender: "N/A",
+        gender: "Unknown manager",
         role: "manager",
         phoneNumber: 700000000,
         address: "MWF HQ",
@@ -102,6 +92,52 @@ async function createDefaultManager() {
     console.error("Error creating default manager:", err);
   }
 }
+
+//Edting users
+router.get("/edit-profile",  async (req, res) => {
+  let item = await StockModel.findById(req.params.id);
+  res.render(`edit-profile`, {item});
+});
+router.put('/edit-profile', async (req, res) =>{
+  try {
+    const product = await StockModel.findByIdAndUpdate(
+      req.params.id,
+      req.body,
+      { new :true }
+    );
+    if (!product) {
+      return res.status(400).send("Product not found.")
+    }
+    res.redirect("/getusers");
+  } catch (error) {}
+});
+
+
+// Toggle user active status
+router.get("/user/:id/toggle",(req, res) => {
+ res.redirect("/getusers");
+});
+
+
+router.post("/users/:id/toggle", /*ensureManager*/async (req, res) => {
+  try {
+    const user = await UserModel.findById(req.params.id);
+
+    if (!user) {
+      return res.status(404).send("User not found");
+    }
+
+    // Flip the current status
+    user.isActive = !user.isActive;
+    await user.save();
+
+    res.redirect("/getusers"); // redirect back to your list
+  } catch (error) {
+    console.error("Error toggling user:", error.message);
+    res.status(500).send("Error toggling user status");
+  }
+});
+
 
 //  Export router as default export
 module.exports = router;

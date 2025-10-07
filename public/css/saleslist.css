@@ -6,8 +6,7 @@
 }
 
 body {
-  color: white;
-  background-image: url(../images/jk.jpg);
+  /* background-image: url(../images/jk.jpg); */
   background-size: cover;
   align-items: center;
   justify-content: center;
@@ -15,7 +14,7 @@ body {
 }
 
 .navbar {
-  background-color: #452815;
+  background-color: #73411f;
 }
 
 .navbar-brand,
@@ -49,9 +48,10 @@ h2 {
 }
 
 
-.button-container .btn {
-  background-color: #452815; 
-  color: #E0C4A0; 
+a.button{
+  background-color: white; 
+  text-decoration: none;
+  color: #73411f; 
   border: none;
   border-radius: 12px;       
   padding: 10px 24px;
@@ -77,10 +77,10 @@ h2 {
 
 
 table {
-  width: 90%;
+  width: 100%;
   margin: 20px auto;
   border-collapse: collapse;
-  background: #E0C4A0;
+  background: whitesmoke;
   box-shadow: 0px 4px 8px rgba(0,0,0,0.1);
 }
 
@@ -95,15 +95,66 @@ table th {
   color: #E0C4A0;
 }
 
-.footer {
-  position: fixed;
-  bottom: 0;
+.search-bar-container {
+  display: flex;
+  color: #73411f;
+  justify-content: space-between;
+  align-items: center;
+  background: #73411f;
+  padding: 10px 15px;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  margin: 0 auto 20px;
+  max-width: 95%;
+}
+
+.search-left {
+  flex: 1;
+  max-width: 350px;
+}
+
+.search-left input {
+  background: white;
+  border: none;
+  border-radius: 6px;
+  padding: 8px 10px;
   width: 100%;
-  background: #452815;
-  color: #ddd;
+}
+
+.search-right {
+  display: flex;
+  gap: 8px;
+}
+
+.search-right select,
+.btn-filter {
+  padding: 8px 10px;
+  border-radius: 6px;
+  border: 1px solid #ddd;
+}
+
+.btn-filter {
+  background: #73411f;
+  color: #fff;
+  border: none;
+}
+
+.btn-filter:hover {
+  background: #5b3015;
+}
+
+/* table {
+  width: 95%;
+  margin: 0 auto;
+} */
+
+
+footer.footer {
+  margin-top: auto;
+  background: #73411f;
+  color: white;
   text-align: center;
-  padding: 15px 0;
-  font-size: 14px;
+  padding: 10px 0;
 }
 
 

@@ -1,17 +1,17 @@
 const express = require("express");
 const router = express.Router();
-// const {ensureauthenticated,ensureManager} = require("../middleware/auth");
+ const {ensureauthenticated,ensureManager} = require("../middleware/auth");
 const StockModel = require("../models/StockModel");
-router.get("/stock", /*ensureManager,*/ (req, res) =>{
+router.get("/stock"/*, ensureManager*/, (req, res) =>{
   res.render("stock");
 });
 
-router.post("/stock",/*ensureManager,*/async (req, res) =>{
+router.post("/stock"/*,ensureManager*/,async (req, res) =>{
   try {
     const stock = new StockModel(req.body)
       console.log(req.body);
     await stock.save();
-    res.redirect("/manager");
+    res.redirect("/stock");
   } catch (error) {
     console.error(error)
   }
@@ -28,7 +28,7 @@ router.get("/stocklist", async (req, res) =>{
 });
 
 
-router.get("/editstock/:id", async (req, res) => {
+router.get("/editstock/:id",  async (req, res) => {
   let item = await StockModel.findById(req.params.id);
   res.render(`editstock`, {item});
 });

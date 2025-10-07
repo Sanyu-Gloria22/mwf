@@ -11,6 +11,10 @@ const userSchema = new mongoose.Schema({
   phoneNumber: { type: Number, required: true },
   address: { type: String, required: true },
   date: { type: String, required: true },
+  isActive: {
+    type: Boolean,
+    default: true
+  },
   status: { type: String, required: true },
 });
 

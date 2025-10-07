@@ -1,0 +1,61 @@
+extends layout 
+block content
+  h2 Sales Recording Form
+  .form-container
+    form(action=`/editsales ${item._id}?_method=PUT` method='POST')
+      label
+        | Customer Name:
+        input(type='text' name='customerName', value=`${item.customerName}` placeholder='Enter Customer Name.')
+      label
+        | Product Name:
+        select(name='productName',  value=`${item.productName}` placeholder='Enter Product Name.')
+          option() Chair
+          option Bed
+          option Cupboard
+          option Drawers
+          option Table
+          option Sofa
+          option Dining Table
+          option Office Table
+          option Office Chair
+          option Tmber
+          option Poles
+      label
+        | Product Type:
+        select(name='productType',  value=`${item.productType}` placeholder='Enter Product Type.')
+          option Wood
+          option Furniture
+          option SoftWood
+          option HardWood
+      label
+        | Quantity:
+        input(type='number' name='quantity',  value=`${item.quantity}` placeholder='Enter Quantity.')
+      label
+        | Price Per Unit:
+        input(type='number' name='unitPrice',  value=`${item.unitPrice}` placeholder='Enter Price Per Unit.')
+      label
+        | color:
+        input(type='text' name='color'  value=`${item.color}` placeholder='Enter Color.') 
+      label
+        | Measurement:
+        input(type='text' name='measurement',  value=`${item.measurement}` placeholder='Enter Measurement.')   
+      label
+        | Date of Sale:
+        input(type='date' name='salesDate',  value=`${item.salesDate}` placeholder='Enter Date.')
+      label
+        | Payment Method:
+        select(name='paymentMethod',  value=`${item.paymentMethod}` placeholder='Enter Payment Method.')
+          option(value="Cash") Cash
+          option(value="Cheque") Cheque
+          option(value="Bank Overdraft") Bank Overdraft
+      label
+        | Total Price:
+        input(type='text' name='totalPrice',  value=`${item.totalPrice}` placeholder='Enter Totalprice.')  
+      label(for='transportfee')
+        input.checkbox#transportfee(type='checkbox' name='transport',  value=`${item.transport}` placeholder='Enter Transport Fee.')
+        |         Add 5% for Transport
+      button(type='submit') Record Sale
+  //- script(src='/scripts/form.js')
+  script(src='https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js')
+  footer
+    | &copy; 2025 Mayondo. All rights reserved.
