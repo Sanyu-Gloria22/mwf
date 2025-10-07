@@ -1,20 +1,20 @@
 const express = require("express");
 const router = express.Router();
-const {ensureauthenticated, ensureAttendant } = require("../middleware/auth");
+const {ensureauthenticated } = require("../middleware/auth");
 
 const salesModel = require("../models/salesModel");
 
 
-router.get("/attendant", ensureAttendant, (req, res) =>{
+router.get("/attendant", ensureauthenticated, (req, res) =>{
   res.render("attendant");
 });
 
 
-router.get("/sales",ensureAttendant, (req, res) =>{
+router.get("/sales",ensureauthenticated, (req, res) =>{
   res.render("sales")
 });
 
-router.post("/sales",ensureAttendant, async (req, res) =>{
+router.post("/sales",ensureauthenticated, async (req, res) =>{
   try {
     const {
       customerName,
@@ -54,14 +54,15 @@ router.post("/sales",ensureAttendant, async (req, res) =>{
   }
 });
 
-router.get("/saleslist", /*ensureAttendant,*/ async (req, res) => {
+router.get("/saleslist", ensureauthenticated, async (req, res) => {
   try {
     let items = await salesModel
       .find()
       .sort({ $natural: -1 })
       .populate("attendant", "fullName emailAddress role");
-
-    res.render("saleslist", { items });
+      const currentUser = req.session.user
+      console.log(currentUser)
+    res.render("saleslist", { items, currentUser: req.session.user});
   } catch (error) {
     console.error("Error fetching sales:", error.message);
     res.status(400).send("Unable to get data from the database.");

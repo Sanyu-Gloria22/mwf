@@ -1,36 +1,78 @@
 const express = require("express");
 const router = express.Router();
+const moment = require("moment");
 const StockModel = require("../models/StockModel");
+const SalesModel = require("../models/salesModel");
+const UserModel = require("../models/userModel"); // Assuming this model represents attendants
+const { ensureManager } = require("../middleware/auth");
 
-router.get("/manager", async (req, res) => {
+router.get("/manager", ensureManager, async (req, res) => {
   try {
-    const items = await StockModel.find();
 
-    // Separate categories
-    const furniture = items.filter(p => p.productType.toLowerCase() === "furniture");
-    const wood = items.filter(p => p.productType.toLowerCase() === "wood");
+    const today = moment().startOf("day").toDate();
+    const tomorrow = moment(today).add(1, "days").toDate();
 
-    // Calculate totals
-    const calculateTotals = arr => {
-      const totalItems = arr.reduce((sum, p) => sum + p.quantity, 0);
-      const totalValue = arr.reduce((sum, p) => sum + p.productPrice * p.quantity, 0);
-      return { totalItems, totalValue };
-    };
 
-    const furnitureTotals = calculateTotals(furniture);
-    const woodTotals = calculateTotals(wood);
+    // Furniture totals
+    const furnitureTotals = await StockModel.aggregate([
+      { $match: { productType: "Furniture" } },
+      {
+        $group: {
+          _id: null,
+          totalItems: { $sum: "$quantity" },
+          totalValue: { $sum: { $multiply: ["$quantity", "$productPrice"] } }
+        }
+      }
+    ]);
+    console.log("Furniture aggregation result:", furnitureTotals);
 
-    // Render manager dashboard
-    res.render("manager", {
-      furniture,
-      wood,
-      furnitureTotals,
-      woodTotals,
+    // Wood totals
+    const woodTotals = await StockModel.aggregate([
+      { $match: { productType: "Wood" } },
+      {
+        $group: {
+          _id: null,
+          totalItems: { $sum: "$quantity" },
+          totalValue: { $sum: { $multiply: ["$quantity", "$productPrice"] } }
+        }
+      }
+    ]);
+
+    // Low stock items count (quantity less than 10 or any threshold)
+    const lowStockCount = await StockModel.countDocuments({
+      quantity: { $lt: 10 }
     });
 
+    // Active attendants count (assuming users with role 'attendant' and active status)
+    const activeAttendants = await UserModel.countDocuments({
+      role: "attendant",
+      isActive: true
+    });
+
+    // Total sales count
+   const todaySalesResult = await SalesModel.aggregate([
+      { $match: { date: { $gte: today, $lt: tomorrow } } },
+      { $group: { _id: null, totalSales: { $sum: "$total" } } }
+    ]);
+
+   const totalSales = todaySalesResult[0] ? todaySalesResult[0].totalSales : 0;
+    // Total revenue sum
+    const revenueResult = await SalesModel.aggregate([
+      { $group: { _id: null, totalRevenue: { $sum: "$totalPrice" } } }
+    ]);
+    const totalRevenue = revenueResult.length > 0 ? revenueResult[0].totalRevenue : 0;
+
+    res.render("manager", {
+      furnitureTotals: furnitureTotals[0] || { totalItems: 0, totalValue: 0 },
+      woodTotals: woodTotals[0] || { totalItems: 0, totalValue: 0 },
+      lowStockCount,
+      activeAttendants,
+      totalSales,
+      totalRevenue
+    });
   } catch (error) {
-    console.error(error);
-    res.status(500).send("Error loading manager dashboard");
+    console.error("Dashboard data fetch error:", error);
+    res.status(500).send("Error fetching dashboard data.");
   }
 });
 

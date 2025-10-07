@@ -36,8 +36,9 @@ block content
         th Sales Agent 
         th Total Price
         th Transport
-        th Update 
-        th Delete
+        if currentUser.role === "manager" 
+          th Update 
+          th Delete
       tbody
         if items.length
           each item in items
@@ -58,12 +59,13 @@ block content
                   span(style="color:red; font-style:italic") Deleted User
               td #{item.totalPrice}
               td #{item.transport}
-              td 
-                a.btn.btn-warning(href=`/editstock/${item._id}`) Edit
-              td
-                form(method='post' action='/deletestock') 
-                  input(type='hidden' name='id' value=item._id)
-                  button(type="submit", class="btn btn-danger btn-sm") Delete 
+              if currentUser.role === "manager"
+                td 
+                  a.btn.btn-warning(href=`/editstock/${item._id}`) Edit
+                td
+                  form(method='post' action='/deletestock') 
+                    input(type='hidden' name='id' value=item._id)
+                    button(type="submit", class="btn btn-danger btn-sm") Delete 
   footer.footer
     p &copy; 2025 MWF Company | All Rights Reserved
     .social-icons

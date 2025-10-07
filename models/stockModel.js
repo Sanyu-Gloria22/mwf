@@ -33,10 +33,11 @@ const stockSchema = new mongoose.Schema({
     type:String,
     required:true,
   },
-  date:{
-    type:String,
+  totalPrice:{
+    type:Number,
     required:true
   },
+  date: { type: Date, default: Date.now },
   supplierName:{
     type:String,
     required:true

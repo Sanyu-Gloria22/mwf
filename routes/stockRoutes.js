@@ -1,61 +1,82 @@
 const express = require("express");
 const router = express.Router();
- const {ensureauthenticated,ensureManager} = require("../middleware/auth");
+const { ensureauthenticated, ensureManager } = require("../middleware/auth");
 const StockModel = require("../models/StockModel");
-router.get("/stock"/*, ensureManager*/, (req, res) =>{
+
+// Show add stock form
+router.get("/stock", ensureManager, (req, res) => {
   res.render("stock");
 });
 
-router.post("/stock"/*,ensureManager*/,async (req, res) =>{
+// Handle add stock form
+router.post("/stock", ensureManager, async (req, res) => {
   try {
-    const stock = new StockModel(req.body)
-      console.log(req.body);
+    const stock = new StockModel(req.body);
+    console.log("New stock data:", req.body);
+
     await stock.save();
-    res.redirect("/stock");
+    res.redirect("/stocklist");
   } catch (error) {
-    console.error(error)
+    console.error("Error adding stock:", error.message);
+    res.status(500).send("Failed to add stock.");
   }
 });
 
-router.get("/stocklist", async (req, res) =>{
+// View stock list
+router.get("/stocklist", ensureManager, async (req, res) => {
   try {
-    let items = await StockModel.find().sort({$natural:-1});
-    console.log(items);
-    res.render("stocklist", {items});
+    let items = await StockModel.find().sort({ $natural: -1 });
+    console.log("Stock items:", items);
+
+    res.render("stocklist", { items });
   } catch (error) {
-    res.status(400).send("Unable to get data from the data base.")
+    console.error("Error fetching stock list:", error.message);
+    res.status(400).send("Unable to get data from the database.");
   }
 });
 
+// Edit stock form
+router.get("/editstock/:id", ensureManager, async (req, res) => {
+  try {
+    let item = await StockModel.findById(req.params.id);
+    if (!item) return res.status(404).send("Stock item not found.");
 
-router.get("/editstock/:id",  async (req, res) => {
-  let item = await StockModel.findById(req.params.id);
-  res.render(`editstock`, {item});
+    res.render("editstock", { item });
+  } catch (error) {
+    console.error("Error loading edit form:", error.message);
+    res.status(400).send("Error loading stock item.");
+  }
 });
-router.put('/editstock/:id', async (req, res) =>{
+
+// Update stock
+router.put("/editstock/:id", ensureManager, async (req, res) => {
   try {
     const product = await StockModel.findByIdAndUpdate(
       req.params.id,
       req.body,
-      { new :true }
+      { new: true }
     );
+
     if (!product) {
-      return res.status(400).send("Product not found.")
+      return res.status(404).send("Product not found.");
     }
+
     res.redirect("/stocklist");
-  } catch (error) {}
+  } catch (error) {
+    console.error("Error updating stock:", error.message);
+    res.status(500).send("Error updating stock item.");
+  }
 });
 
-
-router.post("/deletestock", async (req, res) =>{
+// Delete stock
+router.post("/deletestock", ensureManager, async (req, res) => {
   try {
-    await StockModel.deleteOne({_id:req.body.id});
-    res.redirect("stocklist")
+    await StockModel.deleteOne({ _id: req.body.id });
+    res.redirect("/stocklist");  // ✅ fixed
   } catch (error) {
-    console.log(error.message)
-    res.status(400).send("Unable to delete items from the database")
+    console.error("Error deleting stock:", error.message);
+    res.status(400).send("Unable to delete item from the database.");
   }
-})
-
+});
 
 module.exports = router;

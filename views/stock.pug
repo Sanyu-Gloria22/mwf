@@ -8,7 +8,7 @@ block content
         select(type='text' name='productType')
           option(value="" disabled selected) 
           option(value="Wood") Wood
-          option(value="Funiture") Furniture
+          option(value="Furniture") Furniture
           option(value="HardWood") Hard Wood
           option(value="SoftWood") SoftWood
       label(for='productName')
@@ -21,8 +21,8 @@ block content
         | Cost Price:
         input(type='number' name='costPrice')
       label(for='productPrice')
-        | Total Price:
-        input(type='number' name='productPrice')  
+        | Product Price:
+        input(type='number' name='productPrice')     
       label(for='quality')
         | Quality:
         select(name='quality')
@@ -45,6 +45,9 @@ block content
       label
         | Date:
         input(type='date' name='date')
+      label(for='totalPrice')
+        | Total Price:
+        input(type='number' name='totalPrice')   
       label(for='SupplierName')
         | Supplier&apos;s Name:
         input(type='text' name='supplierName' value="" required)

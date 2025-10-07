@@ -30,10 +30,7 @@ const salesSchema = new mongoose.Schema({
     type:String,
     required:true,
   },
-  salesDate:{
-    type:String,
-    required:true
-  },
+  salesDate: { type: Date, default: Date.now },
   paymentMethod:{
     type:String,
     required:true

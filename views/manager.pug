@@ -8,7 +8,7 @@ head
   link(rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css')
 nav.navbar.navbar-expand-lg
   .container-fluid
-    a.navbar-brand(href='/') MWF
+    img.logo(src='/images/M (1).png', alt='MWF Logo')
     button.navbar-toggler(type='button' data-bs-toggle='collapse' data-bs-target='#navbarNavAltMarkup' aria-controls='navbarNavAltMarkup' aria-expanded='false' aria-label='Toggle navigation')
       span.navbar-toggler-icon
     #navbarNavAltMarkup.collapse.navbar-collapse
@@ -22,6 +22,7 @@ nav.navbar.navbar-expand-lg
         a.nav-link(href='/stock') Add Stock
         a.nav-link(href='/stocklist') Stocklist
         a.nav-link(href='/report') Report
+        a.button(href='/logout') Logout
 .container
   h2 Manager's Dashboard
   .cards
@@ -34,23 +35,18 @@ nav.navbar.navbar-expand-lg
       h3 Wood
       p Total Items: #{woodTotals.totalItems}
       p Total Value: UGX #{woodTotals.totalValue.toLocaleString()}
-        //- p   #{totalExpensePoles.totalCost} Shs
-        //- p   #{totalExpenseChair.totalCost} Shs
-    .card
-      h3 Top Item
-      p Office Desk  
     .card
       h3 Low Stock Items
-      p 7
+      p 
     .card
-      h3 Top Item
-      p Office Desk  
+      h3 Active Attendants
+      p 
     .card
       h3 Total Sales
-      p #{totalSales}
+      p $ #{totalSales}
     .card
-      h3 Top Item
-      p Office Desk
+      h3 Total Revenue
+      p 
   .charts
     .chart-box
       h3 Monthly Revenue Trend
@@ -109,4 +105,4 @@ footer.footer
     a(href='https://www.linkedin.com' target='_blank')
       i.fab.fa-linkedin-in
 script(src='https://cdn.jsdelivr.net/npm/chart.js')
-script(src='/public/scripts/manager.js')        Help me withe indentation 
+script(src='/public/scripts/manager.js')        

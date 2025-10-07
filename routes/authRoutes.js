@@ -62,7 +62,7 @@ router.post("/change-password", async (req, res) => {
       return res.status(404).send("User not found");
     }
 
-    // Passport-Local-Mongoose provides changePassword()
+    // Passport-Local-Mongoose provides changePassword
     await user.changePassword(oldPassword, newPassword);
     await user.save();
 
@@ -72,6 +72,24 @@ router.post("/change-password", async (req, res) => {
     res.status(500).send("Failed to change password. Please try again.");
   }
 });
+
+router.get("/logout", (req, res, next) => {
+  // Capturing user info before session is destroyed
+  const username = req.session.user?.username || req.session.user?.name || "User";
+  const role = req.session.user?.role || "User";
+
+  req.logout((err) => {
+    if (err) return next(err);
+
+    req.session.destroy(() => {
+      res.clearCookie("connect.sid");
+
+      // Passing both username and role to the logout view
+      res.render("logout", { username, role });
+    });
+  });
+});
+
 
 // Multer setup for profile picture (same pattern you already use)
 const storage = multer.diskStorage({

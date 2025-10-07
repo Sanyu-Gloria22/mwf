@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const UserModel = require("../models/UserModel");
+const UserModel = require("../models/userModel");
 const multer = require("multer");
 const path = require("path");
 const passport = require("passport");
@@ -20,7 +20,7 @@ router.get("/userForm",(req, res) => {
   res.render("userForm")
 });
 
-router.post("/userForm", upload.single("profilePicture")/*, ensureManager*/,async (req, res) => {
+router.post("/userForm", upload.single("profilePicture"), ensureManager,async (req, res) => {
   const { 
     fullName, 
     emailAddress, 
@@ -57,7 +57,7 @@ router.post("/userForm", upload.single("profilePicture")/*, ensureManager*/,asyn
 });
 
 
-router.get("/getusers", /*ensureManager,*/ async (req, res) => {
+router.get("/getusers", ensureManager, async (req, res) => {
   try {
     const users = await UserModel.find().sort({ $natural: -1 });
     res.render("userlist", { users });
@@ -119,7 +119,7 @@ router.get("/user/:id/toggle",(req, res) => {
 });
 
 
-router.post("/users/:id/toggle", /*ensureManager*/async (req, res) => {
+router.post("/users/:id/toggle", ensureManager, async (req, res) => {
   try {
     const user = await UserModel.findById(req.params.id);
 
