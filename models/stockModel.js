@@ -40,7 +40,7 @@ const stockSchema = new mongoose.Schema({
   date: { type: Date, default: Date.now },
   supplierName:{
     type:String,
-    required:true
+    required:false
   }
 });
 

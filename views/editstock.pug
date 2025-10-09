@@ -1,4 +1,5 @@
 extends layout-forms 
+
 block content
   h2 Edit Stock Form
   .form-container
@@ -45,7 +46,6 @@ block content
         | Supplier&apos;s Name:
         input(type='text' name='supplierName' value=`${item.supplierName}` required)
       button(type='submit') Add Stock
-  script(src='/Js/form.js')
+  //- script(src='/Js/form.js')
   script(src='https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js')
-  footer
-    | &copy; 2025 Mayondo. All rights reserved.
+

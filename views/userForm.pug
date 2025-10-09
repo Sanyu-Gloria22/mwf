@@ -1,51 +1,96 @@
 doctype html
-head
-  meta(charset='UTF-8')
-  meta(name='viewport' content='width=device-width, initial-scale=1.0')
-  title MW&amp;F SIGNUP
-  link(rel='stylesheet' href='/css/signup.css')
-  link(rel='stylesheet' href='https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css')
-  link(rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css')
-form#login-form(action='/userForm' method='post' enctype="multipart/form-data")
-  h2 Register User
-  .form-row
-    .form-group
-      label(for='profilePicture') Profile Picture (optional)
-      input#profilePicture(type='file' name='profilePicture' accept='image/*')
-    .form-group
-      label(for='fullName') Full Name
-      input#fullName(type='text' name='fullName')
-    .form-group
-      label(for='email') Email Address
-      input#email(type='text' name='emailAddress')
-    .form-group
-      label(for='userName') User Name
-      input#userName(type='text' name='userName')  
-    .form-group
-      label(for='gender') Gender
-      input#gender(type='text' name='gender')
-  .form-row    
-    .form-group
-      label(for='role') Role
-      input#role(type='text' name='role')
-    .form-group
-      label(for='phoneNumber') Phone Number
-      input#phoneNumber(type='number' name='phoneNumber')
-    .form-group
-      label(for='address') Address
-      input#address(type='text' name='address')  
-  .form-row
-    .form-group
-      label(for='date') Date
-      input#date(type='date' name='date')
-    .form-group
-      label(for='status') Status
-      input#date(type='text' name='status')  
-    .form-group.position-relative
-      label(for='password') Password
-      input#password(type='text' name='password')
-      span.toggle-password(onclick='togglePassword()')
-        i#toggleIcon.fa-solid.fa-eye
-  button(type='submit') Register Attendant
-script(src='https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js')
-script(src='/public/scripts/form.js')
+html
+  head
+    meta(charset='UTF-8')
+    meta(name='viewport' content='width=device-width, initial-scale=1.0')
+    title MW&amp;F SIGNUP
+    link(rel='stylesheet' href='/css/signup.css')
+    link(rel='stylesheet' href='https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css')
+    link(rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css')  
+  body   
+    form#login-form(action='/userForm' method='post' enctype="multipart/form-data")
+      h2 Register User
+      
+      //- Display server-side messages
+      if success
+        .alert.alert-success #{success}
+      if error
+        .alert.alert-danger #{error}
+      if message
+        .alert.alert-info #{message}
+
+      .form-row
+        .form-group
+          label(for='profilePicture') Profile Picture (optional)
+          input#profilePicture(type='file' name='profilePicture' accept='image/*')
+          .error-message#profilePictureError
+
+        .form-group
+          label(for='fullName') Full Name *
+          input#fullName(type='text' name='fullName' required)
+          .error-message#fullNameError
+
+        .form-group
+          label(for='email') Email Address *
+          input#email(type='email' name='emailAddress' required)
+          .error-message#emailError
+
+        .form-group
+          label(for='userName') User Name *
+          input#userName(type='text' name='userName' required)
+          .error-message#userNameError
+
+        .form-group
+          label(for='gender') Gender *
+          select#gender(name='gender' required)
+            option(value='') Select Gender
+            option(value='Male') Male
+            option(value='Female') Female
+            option(value='Other') Other
+          .error-message#genderError
+
+      .form-row    
+        .form-group
+          label(for='role') Role *
+          select#role(name='role' required)
+            option(value='') Select Role
+            option(value='attendant') Attendant
+            option(value='manager') Manager
+            option(value='admin') Admin
+          .error-message#roleError
+
+        .form-group
+          label(for='phoneNumber') Phone Number *
+          input#phoneNumber(type='tel' name='phoneNumber' required)
+          .error-message#phoneNumberError
+
+        .form-group
+          label(for='address') Address *
+          input#address(type='text' name='address' required)
+          .error-message#addressError
+
+      .form-row
+        .form-group
+          label(for='date') Date *
+          input#date(type='date' name='date' required)
+          .error-message#dateError
+
+        .form-group
+          label(for='status') Status *
+          select#status(name='status' required)
+            option(value='') Select Status
+            option(value='active') Active
+            option(value='inactive') Inactive
+          .error-message#statusError
+
+        .form-group.position-relative
+          label(for='password') Password *
+          input#password(type='password' name='password' required)
+          span.toggle-password(onclick='togglePassword()')
+            i#toggleIcon.fa-solid.fa-eye
+          .error-message#passwordError
+
+      button(type='submit' id='submitBtn') Register Attendant
+
+    script(src='https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js')
+    script(src='/scripts/form.js')

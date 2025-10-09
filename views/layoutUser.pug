@@ -8,18 +8,20 @@ head
   link(href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css' rel='stylesheet')
 nav.navbar.navbar-expand-lg
   .container-fluid
-    a.navbar-brand(href='#') MWF
+    img.logo(src='/images/M (1).png', alt='MWF Logo')
     button.navbar-toggler(type='button' data-bs-toggle='collapse' data-bs-target='#navbarNavAltMarkup' aria-controls='navbarNavAltMarkup' aria-expanded='false' aria-label='Toggle navigation')
       span.navbar-toggler-icon
     #navbarNavAltMarkup.collapse.navbar-collapse
       .navbar-nav
-        a.nav-link(href='manager.html') Dashboard
-        a.nav-link.active(aria-current='page' href='attendants.html') Users
-        a.nav-link(href='attendants.html') Attendants
-        a.nav-link(href='products.html') Products
-        a.nav-link(href='sales.html')  Add Sales
-        a.nav-link(href='salestable.html') Sales
-        a.nav-link(href='stock.html') Add Stock
-        a.nav-link(href='.html') Stock
+        a.nav-link.active(aria-current='page' href='manager.html') Dashboard
+        a.nav-link(href='/getusers') Users
+        a.nav-link(href='/attendant') Attendants
+        a.nav-link(href='/products') Products
+        a.nav-link(href='/sales')  Add Sales
+        a.nav-link(href='/saleslist') Sales
+        a.nav-link(href='/stock') Add Stock
+        a.nav-link(href='/stocklist') Stocklist
+        a.nav-link(href='/report') Report
+        a.button(href='/logout') Logout
 body 
   block content

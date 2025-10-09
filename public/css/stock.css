@@ -7,6 +7,7 @@
 
 body {
   color: white;
+  background-color: white;
   background-size: cover;
   align-items: center;
   justify-content: center;
@@ -138,55 +139,57 @@ h1 {
   font-weight: 600;
 }
 
-.modal {
+/* Error Styling */
+.error-message {
+  color: #dc3545;
+  font-size: 0.875rem;
+  margin-top: 0.25rem;
   display: none;
-  position: fixed;
-  z-index: 9999;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0,0,0,0.5);
-  justify-content: center;
-  align-items: center;
 }
 
-.modal-content {
-  background: #fff;
-  color: #452815;
-  border-radius: 10px;
-  padding: 20px 30px;
-  text-align: center;
-  max-width: 350px;
-  width: 90%;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
-  animation: fadeIn 0.4s ease;
+.form-control.is-invalid {
+  border-color: #dc3545;
+  box-shadow: 0 0 0 0.2rem rgba(220, 53, 69, 0.25);
 }
 
-.modal.success .modal-content {
-  border-top: 5px solid #2e7d32;
+.form-control.is-valid {
+  border-color: #28a745;
+  box-shadow: 0 0 0 0.2rem rgba(40, 167, 69, 0.25);
 }
 
-.modal.error .modal-content {
-  border-top: 5px solid #b71c1c;
+/* Form Styling */
+.form-container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
 }
 
-.close-btn {
-  float: right;
-  font-size: 20px;
-  cursor: pointer;
-  color: #73411f;
+.form-group {
+  margin-bottom: 1.5rem;
 }
 
-.close-btn:hover {
-  color: #3d1f12;
+label {
+  font-weight: 500;
+  margin-bottom: 0.5rem;
+  display: block;
 }
 
-@keyframes fadeIn {
-  from { opacity: 0; transform: scale(0.8); }
-  to { opacity: 1; transform: scale(1); }
+/* Loading State */
+button:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
 }
 
+.spinner-border-sm {
+  width: 1rem;
+  height: 1rem;
+}
+
+/* Alert Styling */
+.alert {
+  margin-bottom: 1rem;
+  border-radius: 0.5rem;
+}
 
 
 @media (max-width: 576px) {
@@ -215,3 +218,11 @@ h1 {
     width: 600px;
   }
 }
+
+
+
+
+
+
+
+

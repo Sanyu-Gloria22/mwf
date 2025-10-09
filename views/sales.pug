@@ -1,61 +1,86 @@
-extends layout 
+extends layout
+
 block content
   h2 Sales Recording Form
+  if success
+    p.message-success(style='display:block; color:#155724; background:#d4edda; padding:10px; border-radius:6px; margin-bottom:10px;')
+      | #{success}
+  if error
+    p.message-error(style='display:block; color:#721c24; background:#f8d7da; padding:10px; border-radius:6px; margin-bottom:10px;')
+      | #{error}
+  if message
+    p.message-error(style='display:block; color:#721c24; background:#f8d7da; padding:10px; border-radius:6px; margin-bottom:10px;')
+      | #{message}
+  #message-box
+
   .form-container
-    form(action='/sales' method='POST')
+    form#salesForm(action='/sales' method='POST')
       label
         | Customer Name:
-        input(type='text' name='customerName')
-      label
-        | Product Name:
-        select(name='productName')
-          option() Chair
-          option Bed
-          option Cupboard
-          option Drawers
-          option Table
-          option Sofa
-          option Dining Table
-          option Office Table
-          option Office Chair
-          option Tmber
-          option Poles
+        input#customerName(type='text' name='customerName')
+        span#customerNameError.error-message
+
       label
         | Product Type:
-        select(name='productType')
-          option Wood
-          option Furniture
-          option SoftWood
-          option HardWood
+        select#productType(name='productType')
+          option(value='') -- Select Product Type --
+          option(value='Wood') Wood
+          option(value='Furniture') Furniture
+          option(value='HardWood') HardWood
+          option(value='SoftWood') SoftWood
+        span#productTypeError.error-message
+      
+      label
+        | Product Name:
+        select#productName(name='productName')  
+          option(value='') -- Select Product --
+          if stocks && stocks.length
+            each stock in stocks
+              option(value=stock.productName data-type=stock.productType data-price=stock.unitPrice data-quantity=stock.quantity)= stock.productName
+          else
+            option(value='') No products available
+        span#productNameError.error-message
+
       label
         | Quantity:
-        input(type='number' name='quantity')
+        input#quantity(type='number' name='quantity')
+        span#quantityError.error-message
+
       label
         | Price Per Unit:
-        input(type='number' name='unitPrice')
-      label
-        | color:
-        input(type='text' name='color') 
-      label
-        | Measurement:
-        input(type='text' name='measurement')   
+        input#unitPrice(type='number' name='unitPrice')
+        span#unitPriceError.error-message
+
       label
         | Date of Sale:
-        input(type='date' name='salesDate')
+        input#salesDate(type='date' name='salesDate' readonly)
+
       label
         | Payment Method:
-        select(name='paymentMethod')
-          option(value="Cash") Cash
-          option(value="Cheque") Cheque
-          option(value="Bank Overdraft") Bank Overdraft
+        select#paymentMethod(name='paymentMethod')
+          option(value='') -- Select Payment Method --
+          option(value='Cash') Cash
+          option(value='Cheque') Cheque
+          option(value='Bank Overdraft') Bank Overdraft
+        span#paymentMethodError.error-message
+
       label
         | Total Price:
-        input(type='text' name='totalPrice')  
+        input#totalPrice(type='text' name='totalPrice' readonly)
+
       label(for='transportfee')
-        input.checkbox#transportfee(type='checkbox' name='transport')
-        |         Add 5% for Transport
+        input#transportfee.checkbox(type='checkbox' name='transport')
+        | Add 5% for Transport
+
       button(type='submit') Record Sale
-  //- script(src='/scripts/form.js')
+
+  #messageModal.modal(style='display: none; position: fixed; z-index: 1000; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.5);')
+    .modal-content(style='background-color: #1ea311ff; margin: 15% auto; padding: 20px; border: 1px solid #888; width: 80%; max-width: 500px; border-radius: 8px;')
+      span.close-btn(style='color: white; float: right; font-size: 28px; font-weight: bold; cursor: pointer;') &times;
+      p#modalMessage
+
+  script.
+    const stockItems = !{JSON.stringify(stocks || [])};
+
+  script(src='/scripts/calculate.js')
   script(src='https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js')
-  footer
-    | &copy; 2025 Mayondo. All rights reserved.

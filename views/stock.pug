@@ -1,58 +1,107 @@
-extends layout 
+extends layout
+
 block content
   h2 Stock Recording
+  
+  //- Display server-side messages
+  if success
+    .alert.alert-success #{success}
+  if error
+    .alert.alert-danger #{error}
+  if message
+    .alert.alert-info #{message}
+
   .form-container
-    form(action="/stock" method="POST")
-      label(for='productType')
-        | Product Type:
-        select(type='text' name='productType')
-          option(value="" disabled selected) 
-          option(value="Wood") Wood
-          option(value="Furniture") Furniture
-          option(value="HardWood") Hard Wood
-          option(value="SoftWood") SoftWood
-      label(for='productName')
-        | Product Name:
-        input(type='text' name='productName')  
-      label(for='quantity')
-        | Quantity:
-        input(type='number' name='quantity')
-      label(for='costPrice')
-        | Cost Price:
-        input(type='number' name='costPrice')
-      label(for='productPrice')
-        | Product Price:
-        input(type='number' name='productPrice')     
-      label(for='quality')
-        | Quality:
-        select(name='quality')
-          option(value="" disabled selected) 
-          option(value="High") High
-          option(value="Strong") Strong
-          option(value="Basic") Basic
-          option(value="Smooth") Smooth
-          option(value="Lightweight") Lightweight
-          option(value="stable") Stable
-      label(for='color')
-        | Color:
-        input(type='text' name='color')
-      label(for='measurements')
-        | Measurements:
-        select(name='measurement')
-          option(value="Low") Low
-          option(value="High") High
-          option(value="Medium") Medium
-      label
-        | Date:
-        input(type='date' name='date')
-      label(for='totalPrice')
-        | Total Price:
-        input(type='number' name='totalPrice')   
-      label(for='SupplierName')
-        | Supplier&apos;s Name:
-        input(type='text' name='supplierName' value="" required)
-      button(type='submit') Add Stock
-  script(src='/Js/form.js')
+    form#stockForm(action="/stock" method="POST")
+      .form-group
+        label(for='productType')
+          | Product Type: *
+          select#productType.form-control(name='productType' required)
+            option(value="") -- Select Product Type --
+            option(value="Wood") Wood
+            option(value="Furniture") Furniture
+            option(value="HardWood") Hard Wood
+            option(value="SoftWood") Soft Wood
+          .error-message#productTypeError
+
+      .form-group
+        label(for='productName')
+          | Product Name: *
+          input#productName.form-control(type='text' name='productName' required)
+          .error-message#productNameError
+
+      .form-group
+        label(for='quantity')
+          | Quantity: *
+          input#quantity.form-control(type='number' name='quantity' min="1" required)
+          .error-message#quantityError
+
+      .form-group
+        label(for='costPrice')
+          | Cost Price: *
+          input#costPrice.form-control(type='number' name='costPrice' min="0" step="0.01" required)
+          .error-message#costPriceError
+
+      .form-group
+        label(for='productPrice')
+          | Selling Price: *
+          input#productPrice.form-control(type='number' name='productPrice' min="0" step="0.01" required)
+          .error-message#productPriceError
+
+      .form-group
+        label(for='quality')
+          | Quality: *
+          select#quality.form-control(name='quality' required)
+            option(value="") -- Select Quality --
+            option(value="High") High
+            option(value="Strong") Strong
+            option(value="Basic") Basic
+            option(value="Smooth") Smooth
+            option(value="Lightweight") Lightweight
+            option(value="Stable") Stable
+          .error-message#qualityError
+
+      .form-group
+        label(for='color')
+          | Color:
+          input#color.form-control(type='text' name='color')
+          .error-message#colorError
+
+      .form-group
+        label(for='measurement')
+          | Measurements: *
+          select#measurement.form-control(name='measurement' required)
+            option(value="") -- Select Measurement --
+            option(value="Low") Low
+            option(value="Medium") Medium
+            option(value="High") High
+          .error-message#measurementError
+
+      .form-group
+        label(for='date')
+          | Date: *
+          input#date.form-control(type='date' name='date' required)
+          .error-message#dateError
+
+      .form-group
+        label(for='totalPrice')
+          | Total Price: *
+          input#totalPrice.form-control(type='number' name='totalPrice' min="0" step="0.01" readonly)
+          .error-message#totalPriceError
+
+      .form-group
+        label(for='supplierName')
+          | Supplier's Name: *
+          input#supplierName.form-control(type='text' name='supplierName' required)
+          .error-message#supplierNameError
+
+      button.btn.btn-primary(type='submit' id='submitBtn') Add Stock
+
+  //- Modal for messages
+  #messageModal.modal(style='display: none; position: fixed; z-index: 1000; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.5);')
+    .modal-content(style='background-color: #fefefe; margin: 15% auto; padding: 20px; border: 1px solid #888; width: 80%; max-width: 500px; border-radius: 8px;')
+      span.close-btn(style='color: #aaa; float: right; font-size: 28px; font-weight: bold; cursor: pointer;') &times;
+      p#modalMessage
+
+  script(src='/scripts/stockform.js')
   script(src='https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js')
-  footer
-    | &copy; 2025 Mayondo. All rights reserved.

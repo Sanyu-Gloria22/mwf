@@ -14,6 +14,7 @@ nav.navbar.navbar-expand-lg
     #navbarNavAltMarkup.collapse.navbar-collapse
       .navbar-nav
         a.nav-link.active(aria-current='page' href='manager.html') Dashboard
+        a.nav-link(href='/userForm') Register User
         a.nav-link(href='/getusers') Users
         a.nav-link(href='/attendant') Attendants
         a.nav-link(href='/products') Products
@@ -25,35 +26,46 @@ nav.navbar.navbar-expand-lg
         a.button(href='/logout') Logout
 .container
   h2 Manager's Dashboard
-  .cards
-    .card
-      h3 Furniture
-      p Total Items: #{furnitureTotals.totalItems}
-      p Total Value: UGX #{furnitureTotals.totalValue.toLocaleString()}
+  .card-row
+    .cards
+      .card
+        h3 Furniture
+        p Total Items: #{furnitureTotals.totalItems}
+        p Total Value: UGX #{furnitureTotals.totalValue.toLocaleString()}
 
-    .card
-      h3 Wood
-      p Total Items: #{woodTotals.totalItems}
-      p Total Value: UGX #{woodTotals.totalValue.toLocaleString()}
-    .card
-      h3 Low Stock Items
-      p 
-    .card
-      h3 Active Attendants
-      p 
-    .card
-      h3 Total Sales
-      p $ #{totalSales}
-    .card
-      h3 Total Revenue
-      p 
+      .card
+        h3 Wood
+        p Total Items: #{woodTotals.totalItems}
+        p Total Value: UGX #{woodTotals.totalValue.toLocaleString()}
+      .card
+        h3 Today's Sales
+        p 
+      .card
+        h3 Active Attendants
+        p 
+      .card
+        h3 Weekly Revenue
+        p 
+      .card
+        h3 Daily Income
+        p 
+  .card-row  
+    .cards    
+      .card
+        h3 Monthly Revnue Trend
+        p 
+      .card
+        h3 Low Stock Items
+        p 
+  .card-row 
+    .cards      
+      .card
+        h3 Monthly Stock
+        p 
+      .card
+        h3 Top Selling Items
+        p 
   .charts
-    .chart-box
-      h3 Monthly Revenue Trend
-      canvas#revenueChart
-    .chart-box
-      h3 Top Selling Items
-      canvas#topItemsChart
     .chart-box
       h3 Sales Growth
       canvas#growthChart

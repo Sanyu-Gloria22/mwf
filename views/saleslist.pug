@@ -1,7 +1,9 @@
 extends layouttables 
+
 block content
   header
-    h2 Mayondo Wood &amp; Furniture User Management
+    h2 Mayondo Wood & Furniture User Management
+
   .search-bar-container
     .search-left
       .input-group
@@ -17,10 +19,10 @@ block content
         option(value='') Sort by
         option(value='date') Date
         option(value='quantity') Quantity
-      a.button(href='/recit') Print Recit  
-      a.button(href='/sales' type='button') Add Sales 
+      a.button(href='/sales', type='button') Add Sales 
       button.btn-filter(type='button')
         i.fas.fa-filter
+
   table
     thead
       tr
@@ -29,43 +31,46 @@ block content
         th Product Type
         th Quantity
         th Product Price
-        th Color 
-        th Measurement
         th Date Of Sale
         th Payment Method
         th Sales Agent 
         th Total Price
         th Transport
-        if currentUser.role === "manager" 
+        if currentUser && currentUser.role === "manager"
           th Update 
           th Delete
-      tbody
-        if items.length
-          each item in items
-            tr
-              td #{item.customerName}
-              td #{item.productName}
-              td #{item.productType}
-              td #{item.quantity}
-              td #{item.unitPrice}
-              td #{item.color}
-              td #{item.measurement}
-              td #{item.salesDate}
-              td #{item.paymentMethod}
+        else 
+          th Receipt 
+
+    tbody
+      if items && items.length
+        each item in items
+          tr
+            td #{item.customerName}
+            td #{item.productName}
+            td #{item.productType}
+            td #{item.quantity}
+            td #{item.unitPrice}
+            td #{new Date(item.salesDate).toLocaleDateString('en-GB')}
+            td #{item.paymentMethod}
+            td
+              if item.attendant && item.attendant.fullName
+                | #{item.attendant.fullName}
+              else
+                span(style="color:red; font-style:italic") Deleted User
+            td #{item.totalPrice}
+            td #{item.transport}
+            if currentUser && currentUser.role === "manager"
+              td 
+                a.btn.btn-warning(href=`/editstock/${item._id}`) Edit
               td
-                if item.attendant && item.attendant.fullName
-                  | #{item.attendant.fullName}
-                else
-                  span(style="color:red; font-style:italic") Deleted User
-              td #{item.totalPrice}
-              td #{item.transport}
-              if currentUser.role === "manager"
-                td 
-                  a.btn.btn-warning(href=`/editstock/${item._id}`) Edit
-                td
-                  form(method='post' action='/deletestock') 
-                    input(type='hidden' name='id' value=item._id)
-                    button(type="submit", class="btn btn-danger btn-sm") Delete 
+                form(method='post', action='/deletestock') 
+                  input(type='hidden', name='id', value=item._id)
+                  button(type="submit", class="btn btn-danger btn-sm") Delete 
+            else 
+              td
+                a.button(href='/recit') Print Recit  
+
   footer.footer
     p &copy; 2025 MWF Company | All Rights Reserved
     .social-icons
@@ -75,6 +80,6 @@ block content
         i.fab.fa-twitter
       a(href='https://www.linkedin.com' target='_blank')
         i.fab.fa-linkedin-in
+
   script(src='/scripts/stock.js')      
   script(src='https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js')
-  

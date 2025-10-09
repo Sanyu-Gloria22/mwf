@@ -15,21 +15,14 @@ const salesSchema = new mongoose.Schema({
     required:true
   },
   quantity:{
-    type:String,
+    type:Number,
     required:true,
   },
   unitPrice:{
-    type:String,
+    type:Number,
     required:true
   },
   
-  color:{
-    type:String
-  },
-  measurement:{
-    type:String,
-    required:true,
-  },
   salesDate: { type: Date, default: Date.now },
   paymentMethod:{
     type:String,

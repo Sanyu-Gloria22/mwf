@@ -72,7 +72,7 @@ router.put("/editstock/:id", ensureManager, async (req, res) => {
 router.post("/deletestock", ensureManager, async (req, res) => {
   try {
     await StockModel.deleteOne({ _id: req.body.id });
-    res.redirect("/stocklist");  // ✅ fixed
+    res.redirect("/stocklist");  // fixed
   } catch (error) {
     console.error("Error deleting stock:", error.message);
     res.status(400).send("Unable to delete item from the database.");

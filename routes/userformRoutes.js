@@ -19,8 +19,7 @@ const upload = multer({ storage });
 router.get("/userForm",(req, res) => {
   res.render("userForm")
 });
-
-router.post("/userForm", upload.single("profilePicture"), ensureManager,async (req, res) => {
+router.post("/userForm", upload.single("profilePicture"), ensureManager, async (req, res) => {
   const { 
     fullName, 
     emailAddress, 
@@ -35,63 +34,197 @@ router.post("/userForm", upload.single("profilePicture"), ensureManager,async (r
   } = req.body;
 
   try {
+    // Server-side validation
+    const errors = [];
+
+    // Required field validation
+    if (!fullName || fullName.trim().length < 2) {
+      errors.push("Full name is required and must be at least 2 characters long");
+    }
+
+    if (!emailAddress || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailAddress)) {
+      errors.push("Valid email address is required");
+    }
+
+    if (!userName || userName.trim().length < 3) {
+      errors.push("Username is required and must be at least 3 characters long");
+    }
+
+    if (!gender || !['Male', 'Female', 'Other'].includes(gender)) {
+      errors.push("Please select a valid gender");
+    }
+
+    if (!role || !['attendant', 'manager', 'admin'].includes(role)) {
+      errors.push("Please select a valid role");
+    }
+
+    if (!phoneNumber || !/^\+?[\d\s-()]{10,}$/.test(phoneNumber.replace(/\s/g, ''))) {
+      errors.push("Valid phone number is required (at least 10 digits)");
+    }
+
+    if (!address || address.trim().length < 5) {
+      errors.push("Address is required and must be at least 5 characters long");
+    }
+
+    if (!date || isNaN(new Date(date).getTime())) {
+      errors.push("Valid date is required");
+    }
+
+    if (!status || !['active', 'inactive'].includes(status)) {
+      errors.push("Please select a valid status");
+    }
+
+    if (!password || password.length < 8) {
+      errors.push("Password is required and must be at least 8 characters long");
+    }
+
+    // Password strength validation
+    const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]/;
+    if (password && !passwordRegex.test(password)) {
+      errors.push("Password must contain at least one uppercase letter, one lowercase letter, one number, and one special character");
+    }
+
+    // File validation if uploaded
+    if (req.file) {
+      const allowedMimeTypes = ['image/jpeg', 'image/jpg', 'image/png', 'image/gif'];
+      const maxFileSize = 5 * 1024 * 1024; // 5MB
+
+      if (!allowedMimeTypes.includes(req.file.mimetype)) {
+        errors.push("Profile picture must be a JPEG, PNG, or GIF image");
+      }
+
+      if (req.file.size > maxFileSize) {
+        errors.push("Profile picture must be less than 5MB");
+      }
+    }
+
+    // Check if email already exists
+    const existingEmail = await UserModel.findOne({ emailAddress });
+    if (existingEmail) {
+      errors.push("Email address is already registered");
+    }
+
+    // Check if username already exists
+    const existingUsername = await UserModel.findOne({ userName });
+    if (existingUsername) {
+      errors.push("Username is already taken");
+    }
+
+    // If there are validation errors, return them
+    if (errors.length > 0) {
+      // Get stocks data to re-render the form
+      const stocks = await StockModel.find();
+      return res.render("userform", { 
+        error: errors.join(', '),
+        formData: req.body, // Pass back form data to maintain state
+        stocks 
+      });
+    }
+
+    // Create new user
     const newUser = new UserModel({
-      fullName,
-      emailAddress,
-      userName,
+      fullName: fullName.trim(),
+      emailAddress: emailAddress.trim(),
+      userName: userName.trim(),
       gender,
       role,
-      phoneNumber,
-      address,
+      phoneNumber: phoneNumber.trim(),
+      address: address.trim(),
       date,
       status,
       profilePicture: req.file ? req.file.filename : null,
     });
 
+    // Register user with passport-local-mongoose
     await UserModel.register(newUser, password);
-    res.redirect("/login");
+    
+    // Redirect with success message
+    req.session.successMessage = "User registered successfully!";
+    res.redirect("/userform");
+
   } catch (err) {
     console.error("Error registering user:", err.message);
-    res.status(500).send("Failed to register user: " + err.message);
+    
+    // Handle specific errors
+    let errorMessage = "Failed to register user";
+    
+    if (err.name === 'UserExistsError') {
+      errorMessage = "User already exists with that username or email";
+    } else if (err.name === 'MissingPasswordError') {
+      errorMessage = "Password is required";
+    } else {
+      errorMessage = "Failed to register user: " + err.message;
+    }
+
+    // Get stocks data to re-render the form
+    const stocks = await StockModel.find();
+    res.render("userform", { 
+      error: errorMessage,
+      formData: req.body, // Pass back form data
+      stocks 
+    });
   }
 });
 
 
+// Get all users route
 router.get("/getusers", ensureManager, async (req, res) => {
   try {
-    const users = await UserModel.find().sort({ $natural: -1 });
+    console.log("Fetching users list...");
+    const users = await UserModel.find().sort({ createdAt: -1 });
+    console.log(`Found ${users.length} users`);
     res.render("userlist", { users });
   } catch (err) {
-    res.status(400).send("Unable to get data from the database.");
+    console.error("Error fetching users:", err.message);
+    res.status(500).render("error", { 
+      message: "Unable to get data from the database.",
+      error: err 
+    });
   }
 });
 
 // Function to create default manager
 async function createDefaultManager() {
   try {
+    console.log("🔍 Checking for existing manager...");
     const existingManager = await UserModel.findOne({ role: "manager" });
+    
     if (!existingManager) {
+      console.log("👨‍💼 No manager found, creating default manager...");
+      
       const newManager = new UserModel({
         fullName: "System Manager",
         emailAddress: "manager@mwf.com",
         userName: "manager",
-        gender: "Unknown manager",
+        gender: "Male",
         role: "manager",
-        phoneNumber: 700000000,
+        phoneNumber: "700000000",
         address: "MWF HQ",
-        date: new Date().toLocaleDateString(),
-        status: "Active",
+        date: new Date(),
+        status: "active",
         profilePicture: null,
       });
+      
       await UserModel.register(newManager, "manager123");
-      console.log("Default Manager created: manager@mwf.com / manager123");
+      console.log(" Default Manager created successfully!");
+      console.log(" Email: manager@mwf.com");
+      console.log(" Password: manager123");
+      console.log("Username: manager");
     } else {
-      console.log("Manager already exists");
+      console.log("Manager account already exists");
     }
   } catch (err) {
-    console.error("Error creating default manager:", err);
+    console.error("Error creating default manager:", err.message);
+    if (err.name === 'UserExistsError') {
+      console.error("⚠️ Manager user already exists in the system");
+    }
   }
 }
+
+// Initialize default manager when this module loads
+createDefaultManager();
+
+module.exports = router;
 
 //Edting users
 router.get("/edit-profile",  async (req, res) => {
